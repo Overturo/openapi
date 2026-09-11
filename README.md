@@ -1,5 +1,5 @@
 > **Release mirror.** This repository is a read-only snapshot of
-> `openapi` 2026.09.11, published from Overturo's main
+> `openapi` 2026.09.11.1, published from Overturo's main
 > development repository. Issues and pull requests are welcome here; accepted
 > changes are ported upstream and appear in the next release snapshot.
 > Security reports: see [SECURITY.md](./SECURITY.md).
@@ -22,8 +22,10 @@ first, and the next snapshot describes it.
 ## Versioning
 
 - `info.version` is the API version (currently `v1`).
-- Snapshots are tagged by publication date, `vYYYY.MM.DD`, and the history is
-  linear: a snapshot is never rewritten.
+- Snapshots are tagged by publication date, `vYYYY.MM.DD` (a same-day re-issue
+  appends `.N`), and the history is linear: a snapshot is never rewritten.
+- The OAuth2 security scheme names the production identity endpoints; regional
+  deployments advertise their own in the live document.
 
 ## What this snapshot covers
 

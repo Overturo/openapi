@@ -1400,9 +1400,9 @@
       "oauth2": {
         "flows": {
           "authorizationCode": {
-            "authorizationUrl": "http://localhost:4444/oauth2/auth",
+            "authorizationUrl": "https://auth.overturo.com/oauth2/auth",
             "scopes": {},
-            "tokenUrl": "http://localhost:4444/oauth2/token"
+            "tokenUrl": "https://auth.overturo.com/oauth2/token"
           }
         },
         "type": "oauth2"
