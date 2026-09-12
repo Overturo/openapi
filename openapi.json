@@ -5052,6 +5052,12 @@
         "summary": "Index Accounts",
         "tags": [
           "Core"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -5498,6 +5504,12 @@
         "summary": "Index AgentIdentities",
         "tags": [
           "Delegate"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       },
       "post": {
@@ -5592,6 +5604,12 @@
         "summary": "Create AgentIdentities",
         "tags": [
           "Delegate"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -8085,6 +8103,12 @@
         "summary": "Destroy AgentIdentities",
         "tags": [
           "Delegate"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       },
       "get": {
@@ -8180,6 +8204,12 @@
         "summary": "Show AgentIdentities",
         "tags": [
           "Delegate"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       },
       "patch": {
@@ -8275,6 +8305,12 @@
         "summary": "Update AgentIdentities",
         "tags": [
           "Delegate"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       },
       "put": {
@@ -8477,6 +8513,12 @@
         "summary": "Delegate AgentIdentities",
         "tags": [
           "Delegate"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -8574,6 +8616,12 @@
         "summary": "Reactivate AgentIdentities",
         "tags": [
           "Delegate"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -8671,6 +8719,12 @@
         "summary": "Suspend AgentIdentities",
         "tags": [
           "Delegate"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -9828,6 +9882,12 @@
         "summary": "Index Agreements",
         "tags": [
           "Agree"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -9924,6 +9984,12 @@
         "summary": "Propose Agreements",
         "tags": [
           "Agree"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -10319,6 +10385,12 @@
         "summary": "Show Agreements",
         "tags": [
           "Agree"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -10416,6 +10488,12 @@
         "summary": "Accept Agreements",
         "tags": [
           "Agree"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -10513,6 +10591,12 @@
         "summary": "Counter Agreements",
         "tags": [
           "Agree"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -10707,6 +10791,12 @@
         "summary": "Show Anchors",
         "tags": [
           "Comply"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -10804,6 +10894,12 @@
         "summary": "Export Anchors",
         "tags": [
           "Comply"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -10901,6 +10997,12 @@
         "summary": "Receipts Anchors",
         "tags": [
           "Comply"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -15338,6 +15440,12 @@
         "summary": "Index Flows",
         "tags": [
           "Connect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       },
       "post": {
@@ -15443,6 +15551,12 @@
         "summary": "Create Flows",
         "tags": [
           "Connect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -16086,6 +16200,12 @@
         "summary": "Destroy Flows",
         "tags": [
           "Connect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       },
       "get": {
@@ -16190,6 +16310,12 @@
         "summary": "Show Flows",
         "tags": [
           "Connect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       },
       "patch": {
@@ -16304,6 +16430,12 @@
         "summary": "Update Flows",
         "tags": [
           "Connect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       },
       "put": {
@@ -16524,6 +16656,12 @@
         "summary": "Activate Flows",
         "tags": [
           "Connect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -16630,6 +16768,12 @@
         "summary": "Archive Flows",
         "tags": [
           "Connect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -16736,6 +16880,12 @@
         "summary": "Deprecate Flows",
         "tags": [
           "Connect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -16842,6 +16992,12 @@
         "summary": "Resolve preview Flows",
         "tags": [
           "Connect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -20554,6 +20710,12 @@
         "summary": "Confirm export Portability",
         "tags": [
           "Connect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -20661,6 +20823,12 @@
         "summary": "Confirm import Portability",
         "tags": [
           "Connect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -20758,6 +20926,12 @@
         "summary": "Formats Portability",
         "tags": [
           "Connect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -26609,6 +26783,12 @@
         "summary": "Index Webhooks",
         "tags": [
           "Connect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       },
       "post": {
@@ -26714,6 +26894,12 @@
         "summary": "Create Webhooks",
         "tags": [
           "Connect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -26820,6 +27006,12 @@
         "summary": "Destroy Webhooks",
         "tags": [
           "Connect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       },
       "get": {
@@ -26924,6 +27116,12 @@
         "summary": "Show Webhooks",
         "tags": [
           "Connect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       },
       "patch": {
@@ -27038,6 +27236,12 @@
         "summary": "Update Webhooks",
         "tags": [
           "Connect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       },
       "put": {
@@ -27452,6 +27656,12 @@
         "summary": "Publish Applications",
         "tags": [
           "Connect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -27549,6 +27759,12 @@
         "summary": "Unpublish Applications",
         "tags": [
           "Connect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -28480,6 +28696,20 @@
         "summary": "Show AuthorizationReceipts",
         "tags": [
           "Delegate"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (PyPI)",
+            "repository": "https://github.com/overturo/sdk-python"
+          },
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          },
+          {
+            "package": "@overturo/sdk (npm)",
+            "repository": "https://github.com/overturo/sdk"
+          }
         ]
       }
     },
@@ -28963,6 +29193,12 @@
         "summary": "Index CleanRooms",
         "tags": [
           "Comply"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       },
       "post": {
@@ -29057,6 +29293,12 @@
         "summary": "Create CleanRooms",
         "tags": [
           "Comply"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -29251,6 +29493,12 @@
         "summary": "Index Queries",
         "tags": [
           "Comply"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       },
       "post": {
@@ -29356,6 +29604,12 @@
         "summary": "Create Queries",
         "tags": [
           "Comply"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -29462,6 +29716,12 @@
         "summary": "Show Queries",
         "tags": [
           "Comply"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -29559,6 +29819,12 @@
         "summary": "Destroy CleanRooms",
         "tags": [
           "Comply"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       },
       "get": {
@@ -29654,6 +29920,12 @@
         "summary": "Show CleanRooms",
         "tags": [
           "Comply"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -29751,6 +30023,12 @@
         "summary": "Approve CleanRooms",
         "tags": [
           "Comply"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -29837,6 +30115,12 @@
         "summary": "Index Collaborations",
         "tags": [
           "Agree"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       },
       "post": {
@@ -29931,6 +30215,12 @@
         "summary": "Create Collaborations",
         "tags": [
           "Agree"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -30028,6 +30318,12 @@
         "summary": "Show Collaborations",
         "tags": [
           "Agree"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -30135,6 +30431,12 @@
         "summary": "Invite Collaborations",
         "tags": [
           "Agree"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -30329,6 +30631,12 @@
         "summary": "Sign Collaborations",
         "tags": [
           "Agree"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -30964,6 +31272,12 @@
         "summary": "Index Connections",
         "tags": [
           "Connect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -31273,6 +31587,12 @@
         "summary": "Destroy Connections",
         "tags": [
           "Connect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       },
       "get": {
@@ -31368,6 +31688,12 @@
         "summary": "Show Connections",
         "tags": [
           "Connect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -31465,6 +31791,12 @@
         "summary": "Suspend Connections",
         "tags": [
           "Connect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -31562,6 +31894,12 @@
         "summary": "Unsuspend Connections",
         "tags": [
           "Connect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -32608,6 +32946,16 @@
         "summary": "Create ConsentSessions",
         "tags": [
           "Consent"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "@overturo/js (npm)",
+            "repository": "https://github.com/overturo/js"
+          },
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -32707,6 +33055,16 @@
         "summary": "Show ConsentSessions",
         "tags": [
           "Consent"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "@overturo/js (npm)",
+            "repository": "https://github.com/overturo/js"
+          },
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -32905,6 +33263,12 @@
         "summary": "Authorize ConsentSessions",
         "tags": [
           "Consent"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -33309,6 +33673,16 @@
         "summary": "Exchange ConsentSessions",
         "tags": [
           "Consent"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "@overturo/js (npm)",
+            "repository": "https://github.com/overturo/js"
+          },
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -33408,6 +33782,12 @@
         "summary": "Verify ConsentSessions",
         "tags": [
           "Consent"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -33666,6 +34046,12 @@
         "summary": "Index Credentials",
         "tags": [
           "Verify"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       },
       "post": {
@@ -33760,6 +34146,12 @@
         "summary": "Create Credentials",
         "tags": [
           "Verify"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -33857,6 +34249,12 @@
         "summary": "Destroy Credentials",
         "tags": [
           "Verify"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       },
       "get": {
@@ -33952,6 +34350,12 @@
         "summary": "Show Credentials",
         "tags": [
           "Verify"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -34049,6 +34453,12 @@
         "summary": "Wallet pass Credentials",
         "tags": [
           "Verify"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -34231,6 +34641,12 @@
         "summary": "Index DataLicenses",
         "tags": [
           "Protect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       },
       "post": {
@@ -34325,6 +34741,12 @@
         "summary": "Create DataLicenses",
         "tags": [
           "Protect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -34422,6 +34844,12 @@
         "summary": "Show DataLicenses",
         "tags": [
           "Protect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -34519,6 +34947,12 @@
         "summary": "Terminate DataLicenses",
         "tags": [
           "Protect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -34969,6 +35403,12 @@
         "summary": "Index DataRequests",
         "tags": [
           "Protect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       },
       "post": {
@@ -35063,6 +35503,12 @@
         "summary": "Create DataRequests",
         "tags": [
           "Protect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -35160,6 +35606,12 @@
         "summary": "Show DataRequests",
         "tags": [
           "Protect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -35817,6 +36269,16 @@
         "summary": "Create Decisions",
         "tags": [
           "Agree"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "@overturo/js (npm)",
+            "repository": "https://github.com/overturo/js"
+          },
+          {
+            "package": "overturo (PyPI)",
+            "repository": "https://github.com/overturo/sdk-python"
+          }
         ]
       }
     },
@@ -35917,6 +36379,12 @@
         "summary": "Wait Decisions",
         "tags": [
           "Agree"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (PyPI)",
+            "repository": "https://github.com/overturo/sdk-python"
+          }
         ]
       }
     },
@@ -36027,6 +36495,24 @@
         "summary": "Preview a flow's disclosures",
         "tags": [
           "Agree"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "@overturo/js (npm)",
+            "repository": "https://github.com/overturo/js"
+          },
+          {
+            "package": "overturo (PyPI)",
+            "repository": "https://github.com/overturo/sdk-python"
+          },
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          },
+          {
+            "package": "@overturo/sdk (npm)",
+            "repository": "https://github.com/overturo/sdk"
+          }
         ]
       }
     },
@@ -36215,6 +36701,16 @@
         "summary": "Show Decisions",
         "tags": [
           "Agree"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "@overturo/js (npm)",
+            "repository": "https://github.com/overturo/js"
+          },
+          {
+            "package": "overturo (PyPI)",
+            "repository": "https://github.com/overturo/sdk-python"
+          }
         ]
       }
     },
@@ -36413,6 +36909,12 @@
         "summary": "Cancel Decisions",
         "tags": [
           "Agree"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "@overturo/js (npm)",
+            "repository": "https://github.com/overturo/js"
+          }
         ]
       }
     },
@@ -36916,6 +37418,12 @@
         "summary": "Exchange Decisions",
         "tags": [
           "Agree"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "@overturo/js (npm)",
+            "repository": "https://github.com/overturo/js"
+          }
         ]
       }
     },
@@ -37284,6 +37792,12 @@
         "summary": "Index Delegations",
         "tags": [
           "Delegate"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       },
       "post": {
@@ -37378,6 +37892,12 @@
         "summary": "Create Delegations",
         "tags": [
           "Delegate"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -37475,6 +37995,12 @@
         "summary": "Show Delegations",
         "tags": [
           "Delegate"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       },
       "patch": {
@@ -37580,6 +38106,12 @@
         "summary": "Update Delegations",
         "tags": [
           "Delegate"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       },
       "put": {
@@ -37782,6 +38314,12 @@
         "summary": "Revoke Delegations",
         "tags": [
           "Delegate"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -38995,6 +39533,20 @@
         "summary": "Create DisclosureReceipts",
         "tags": [
           "Delegate"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (PyPI)",
+            "repository": "https://github.com/overturo/sdk-python"
+          },
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          },
+          {
+            "package": "@overturo/sdk (npm)",
+            "repository": "https://github.com/overturo/sdk"
+          }
         ]
       }
     },
@@ -39924,6 +40476,12 @@
         "summary": "Index Entitlements",
         "tags": [
           "Consent"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -40021,6 +40579,12 @@
         "summary": "Show Entitlements",
         "tags": [
           "Consent"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -40118,6 +40682,12 @@
         "summary": "Verify Entitlements",
         "tags": [
           "Consent"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -40215,6 +40785,12 @@
         "summary": "Show EvidencePackages",
         "tags": [
           "Comply"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -41128,6 +41704,16 @@
         "summary": "Create Authorize",
         "tags": [
           "Other"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (PyPI)",
+            "repository": "https://github.com/overturo/sdk-python"
+          },
+          {
+            "package": "@overturo/sdk (npm)",
+            "repository": "https://github.com/overturo/sdk"
+          }
         ]
       }
     },
@@ -41613,6 +42199,16 @@
         "summary": "Refresh Tokens",
         "tags": [
           "Other"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (PyPI)",
+            "repository": "https://github.com/overturo/sdk-python"
+          },
+          {
+            "package": "@overturo/sdk (npm)",
+            "repository": "https://github.com/overturo/sdk"
+          }
         ]
       }
     },
@@ -44005,6 +44601,12 @@
         "summary": "Show Me",
         "tags": [
           "Core"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -45028,6 +45630,16 @@
         "summary": "Create Attestations",
         "tags": [
           "Other"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (PyPI)",
+            "repository": "https://github.com/overturo/sdk-python"
+          },
+          {
+            "package": "@overturo/sdk (npm)",
+            "repository": "https://github.com/overturo/sdk"
+          }
         ]
       }
     },
@@ -45114,6 +45726,16 @@
         "summary": "Heartbeat Attestations",
         "tags": [
           "Other"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (PyPI)",
+            "repository": "https://github.com/overturo/sdk-python"
+          },
+          {
+            "package": "@overturo/sdk (npm)",
+            "repository": "https://github.com/overturo/sdk"
+          }
         ]
       }
     },
@@ -45370,6 +45992,16 @@
         "summary": "Create EscalationsCreate",
         "tags": [
           "Other"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (PyPI)",
+            "repository": "https://github.com/overturo/sdk-python"
+          },
+          {
+            "package": "@overturo/sdk (npm)",
+            "repository": "https://github.com/overturo/sdk"
+          }
         ]
       }
     },
@@ -46124,6 +46756,16 @@
         "summary": "Create Revocations",
         "tags": [
           "Other"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (PyPI)",
+            "repository": "https://github.com/overturo/sdk-python"
+          },
+          {
+            "package": "@overturo/sdk (npm)",
+            "repository": "https://github.com/overturo/sdk"
+          }
         ]
       }
     },
@@ -47088,6 +47730,12 @@
         "summary": "Index Policies",
         "tags": [
           "Protect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       },
       "post": {
@@ -47182,6 +47830,12 @@
         "summary": "Create Policies",
         "tags": [
           "Protect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -47279,6 +47933,12 @@
         "summary": "Destroy Policies",
         "tags": [
           "Protect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       },
       "get": {
@@ -47374,6 +48034,12 @@
         "summary": "Show Policies",
         "tags": [
           "Protect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       },
       "patch": {
@@ -47469,6 +48135,12 @@
         "summary": "Update Policies",
         "tags": [
           "Protect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       },
       "put": {
@@ -47661,6 +48333,12 @@
         "summary": "Activate Policies",
         "tags": [
           "Protect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -47952,6 +48630,12 @@
         "summary": "Revoke Policies",
         "tags": [
           "Protect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -48059,6 +48743,12 @@
         "summary": "Share Policies",
         "tags": [
           "Protect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -48242,6 +48932,12 @@
         "summary": "Create Presentations",
         "tags": [
           "Verify"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -48339,6 +49035,12 @@
         "summary": "Show Presentations",
         "tags": [
           "Verify"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -48436,6 +49138,12 @@
         "summary": "Present Presentations",
         "tags": [
           "Verify"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -48535,6 +49243,12 @@
         "summary": "Create PreviewTokens",
         "tags": [
           "Other"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "@overturo/js (npm)",
+            "repository": "https://github.com/overturo/js"
+          }
         ]
       }
     },
@@ -48621,6 +49335,12 @@
         "summary": "Index QuorumRequests",
         "tags": [
           "Other"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       },
       "post": {
@@ -48715,6 +49435,12 @@
         "summary": "Create QuorumRequests",
         "tags": [
           "Other"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -48812,6 +49538,12 @@
         "summary": "Show QuorumRequests",
         "tags": [
           "Other"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -48919,6 +49651,12 @@
         "summary": "Vote QuorumRequests",
         "tags": [
           "Other"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -49906,6 +50644,12 @@
         "summary": "Read your residency posture",
         "tags": [
           "Other"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -49993,6 +50737,12 @@
         "summary": "Export Proof of Residency",
         "tags": [
           "Other"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -50079,6 +50829,12 @@
         "summary": "Index SecurityEventStreams",
         "tags": [
           "Delegate"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       },
       "post": {
@@ -50173,6 +50929,12 @@
         "summary": "Create SecurityEventStreams",
         "tags": [
           "Delegate"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -50270,6 +51032,12 @@
         "summary": "Destroy SecurityEventStreams",
         "tags": [
           "Delegate"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       },
       "get": {
@@ -50365,6 +51133,12 @@
         "summary": "Show SecurityEventStreams",
         "tags": [
           "Delegate"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       },
       "patch": {
@@ -50470,6 +51244,12 @@
         "summary": "Update SecurityEventStreams",
         "tags": [
           "Delegate"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       },
       "put": {
@@ -50672,6 +51452,12 @@
         "summary": "Poll SecurityEventStreams",
         "tags": [
           "Delegate"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       },
       "post": {
@@ -50864,6 +51650,12 @@
         "summary": "Verify SecurityEventStreams",
         "tags": [
           "Delegate"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -51414,6 +52206,12 @@
         "summary": "Read the transfer register",
         "tags": [
           "Other"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -51501,6 +52299,12 @@
         "summary": "Export verifiable transfer evidence",
         "tags": [
           "Other"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -51587,6 +52391,12 @@
         "summary": "Index Transfers",
         "tags": [
           "Protect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       },
       "post": {
@@ -51681,6 +52491,12 @@
         "summary": "Create Transfers",
         "tags": [
           "Protect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -51778,6 +52594,12 @@
         "summary": "Show Transfers",
         "tags": [
           "Protect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -51875,6 +52697,12 @@
         "summary": "Cancel Transfers",
         "tags": [
           "Protect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -52155,6 +52983,12 @@
         "summary": "Index TrustLevels",
         "tags": [
           "Consent"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -52252,6 +53086,12 @@
         "summary": "Show TrustLevels",
         "tags": [
           "Consent"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -52359,6 +53199,12 @@
         "summary": "Trigger TrustLevels",
         "tags": [
           "Consent"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -52445,6 +53291,12 @@
         "summary": "Index TrustScores",
         "tags": [
           "Verify"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -52531,6 +53383,12 @@
         "summary": "Query TrustScores",
         "tags": [
           "Verify"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -52980,6 +53838,12 @@
         "summary": "Create VerificationSessions",
         "tags": [
           "Verify"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -53077,6 +53941,12 @@
         "summary": "Show VerificationSessions",
         "tags": [
           "Verify"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -53432,6 +54302,12 @@
         "summary": "Index Vouches",
         "tags": [
           "Verify"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       },
       "post": {
@@ -53526,6 +54402,12 @@
         "summary": "Create Vouches",
         "tags": [
           "Verify"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -53612,6 +54494,12 @@
         "summary": "Received Vouches",
         "tags": [
           "Verify"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },
@@ -53709,6 +54597,12 @@
         "summary": "Destroy Vouches",
         "tags": [
           "Verify"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       },
       "get": {
@@ -53804,6 +54698,12 @@
         "summary": "Show Vouches",
         "tags": [
           "Verify"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          }
         ]
       }
     },

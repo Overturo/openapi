@@ -3535,6 +3535,9 @@ paths:
       summary: Index Accounts
       tags:
       - Core
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/add_ons":
     get:
       operationId: AddOns_index
@@ -3800,6 +3803,9 @@ paths:
       summary: Index AgentIdentities
       tags:
       - Delegate
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
     post:
       operationId: AgentIdentities_create
       requestBody:
@@ -3856,6 +3862,9 @@ paths:
       summary: Create AgentIdentities
       tags:
       - Delegate
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/agent_identities/by_application":
     get:
       operationId: AgentIdentities_by_application
@@ -5353,6 +5362,9 @@ paths:
       summary: Destroy AgentIdentities
       tags:
       - Delegate
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
     get:
       operationId: AgentIdentities_show
       parameters:
@@ -5410,6 +5422,9 @@ paths:
       summary: Show AgentIdentities
       tags:
       - Delegate
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
     patch:
       operationId: AgentIdentities_update
       parameters:
@@ -5467,6 +5482,9 @@ paths:
       summary: Update AgentIdentities
       tags:
       - Delegate
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
     put:
       operationId: AgentIdentities_update_put
       parameters:
@@ -5588,6 +5606,9 @@ paths:
       summary: Delegate AgentIdentities
       tags:
       - Delegate
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/agent_identities/{id}/reactivate":
     post:
       operationId: AgentIdentities_reactivate
@@ -5646,6 +5667,9 @@ paths:
       summary: Reactivate AgentIdentities
       tags:
       - Delegate
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/agent_identities/{id}/suspend":
     post:
       operationId: AgentIdentities_suspend
@@ -5704,6 +5728,9 @@ paths:
       summary: Suspend AgentIdentities
       tags:
       - Delegate
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/agent_operators/{application_id}/agents":
     get:
       operationId: AgentOperators_index
@@ -6398,6 +6425,9 @@ paths:
       summary: Index Agreements
       tags:
       - Agree
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/agreements/propose":
     post:
       operationId: Agreements_propose
@@ -6455,6 +6485,9 @@ paths:
       summary: Propose Agreements
       tags:
       - Agree
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/agreements/{agreement_id}/signatures":
     get:
       operationId: AgreementSignatures_index
@@ -6692,6 +6725,9 @@ paths:
       summary: Show Agreements
       tags:
       - Agree
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/agreements/{id}/accept":
     post:
       operationId: Agreements_accept
@@ -6750,6 +6786,9 @@ paths:
       summary: Accept Agreements
       tags:
       - Agree
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/agreements/{id}/counter":
     post:
       operationId: Agreements_counter
@@ -6808,6 +6847,9 @@ paths:
       summary: Counter Agreements
       tags:
       - Agree
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/agreements/{id}/receipt":
     get:
       operationId: Agreements_receipt
@@ -6924,6 +6966,9 @@ paths:
       summary: Show Anchors
       tags:
       - Comply
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/anchors/{id}/export":
     get:
       operationId: Anchors_export
@@ -6982,6 +7027,9 @@ paths:
       summary: Export Anchors
       tags:
       - Comply
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/anchors/{id}/receipts":
     get:
       operationId: Anchors_receipts
@@ -7040,6 +7088,9 @@ paths:
       summary: Receipts Anchors
       tags:
       - Comply
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/api_tokens":
     get:
       operationId: ApiTokens_index
@@ -9702,6 +9753,9 @@ paths:
       summary: Index Flows
       tags:
       - Connect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
     post:
       operationId: Applications_Flows_create
       parameters:
@@ -9765,6 +9819,9 @@ paths:
       summary: Create Flows
       tags:
       - Connect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/applications/{application_id}/flows/{flow_id}/distribution_links":
     get:
       operationId: Applications_FlowDistributionLinks_index
@@ -10154,6 +10211,9 @@ paths:
       summary: Destroy Flows
       tags:
       - Connect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
     get:
       operationId: Applications_Flows_show
       parameters:
@@ -10217,6 +10277,9 @@ paths:
       summary: Show Flows
       tags:
       - Connect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
     patch:
       operationId: Applications_Flows_update
       parameters:
@@ -10286,6 +10349,9 @@ paths:
       summary: Update Flows
       tags:
       - Connect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
     put:
       operationId: Applications_Flows_update_put
       parameters:
@@ -10419,6 +10485,9 @@ paths:
       summary: Activate Flows
       tags:
       - Connect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/applications/{application_id}/flows/{id}/archive":
     post:
       operationId: Applications_Flows_archive
@@ -10483,6 +10552,9 @@ paths:
       summary: Archive Flows
       tags:
       - Connect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/applications/{application_id}/flows/{id}/deprecate":
     post:
       operationId: Applications_Flows_deprecate
@@ -10547,6 +10619,9 @@ paths:
       summary: Deprecate Flows
       tags:
       - Connect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/applications/{application_id}/flows/{id}/resolve_preview":
     post:
       operationId: Applications_Flows_resolve_preview
@@ -10611,6 +10686,9 @@ paths:
       summary: Resolve preview Flows
       tags:
       - Connect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/applications/{application_id}/identity_providers":
     get:
       operationId: Applications_IdentityProviders_index
@@ -12845,6 +12923,9 @@ paths:
       summary: Confirm export Portability
       tags:
       - Connect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/applications/{application_id}/portability/confirm_import":
     post:
       operationId: Applications_Portability_confirm_import
@@ -12909,6 +12990,9 @@ paths:
       summary: Confirm import Portability
       tags:
       - Connect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/applications/{application_id}/portability/formats":
     get:
       operationId: Applications_Portability_formats
@@ -12967,6 +13051,9 @@ paths:
       summary: Formats Portability
       tags:
       - Connect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/applications/{application_id}/presentation_requests":
     post:
       description: Creates a presentation request for a digital credential. Hand the
@@ -16501,6 +16588,9 @@ paths:
       summary: Index Webhooks
       tags:
       - Connect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
     post:
       operationId: Applications_Webhooks_create
       parameters:
@@ -16564,6 +16654,9 @@ paths:
       summary: Create Webhooks
       tags:
       - Connect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/applications/{application_id}/webhooks/{id}":
     delete:
       operationId: Applications_Webhooks_destroy
@@ -16628,6 +16721,9 @@ paths:
       summary: Destroy Webhooks
       tags:
       - Connect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
     get:
       operationId: Applications_Webhooks_show
       parameters:
@@ -16691,6 +16787,9 @@ paths:
       summary: Show Webhooks
       tags:
       - Connect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
     patch:
       operationId: Applications_Webhooks_update
       parameters:
@@ -16760,6 +16859,9 @@ paths:
       summary: Update Webhooks
       tags:
       - Connect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
     put:
       operationId: Applications_Webhooks_update_put
       parameters:
@@ -17009,6 +17111,9 @@ paths:
       summary: Publish Applications
       tags:
       - Connect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/applications/{id}/unpublish":
     post:
       operationId: Applications_unpublish
@@ -17067,6 +17172,9 @@ paths:
       summary: Unpublish Applications
       tags:
       - Connect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/attestations/{id}":
     get:
       operationId: Attestations_show
@@ -17631,6 +17739,13 @@ paths:
       summary: Show AuthorizationReceipts
       tags:
       - Delegate
+      x-overturo-sdks:
+      - package: overturo (PyPI)
+        repository: https://github.com/overturo/sdk-python
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
+      - package: "@overturo/sdk (npm)"
+        repository: https://github.com/overturo/sdk
   "/api/v1/breach_scope":
     get:
       description: 'Reports what a credential reached in a window: how many people''s
@@ -17928,6 +18043,9 @@ paths:
       summary: Index CleanRooms
       tags:
       - Comply
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
     post:
       operationId: CleanRooms_create
       requestBody:
@@ -17984,6 +18102,9 @@ paths:
       summary: Create CleanRooms
       tags:
       - Comply
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/clean_rooms/{clean_room_id}/audit_log":
     get:
       operationId: CleanRooms_AuditLog_index
@@ -18100,6 +18221,9 @@ paths:
       summary: Index Queries
       tags:
       - Comply
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
     post:
       operationId: CleanRooms_Queries_create
       parameters:
@@ -18163,6 +18287,9 @@ paths:
       summary: Create Queries
       tags:
       - Comply
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/clean_rooms/{clean_room_id}/queries/{id}":
     get:
       operationId: CleanRooms_Queries_show
@@ -18227,6 +18354,9 @@ paths:
       summary: Show Queries
       tags:
       - Comply
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/clean_rooms/{id}":
     delete:
       operationId: CleanRooms_destroy
@@ -18285,6 +18415,9 @@ paths:
       summary: Destroy CleanRooms
       tags:
       - Comply
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
     get:
       operationId: CleanRooms_show
       parameters:
@@ -18342,6 +18475,9 @@ paths:
       summary: Show CleanRooms
       tags:
       - Comply
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/clean_rooms/{id}/approve":
     post:
       operationId: CleanRooms_approve
@@ -18400,6 +18536,9 @@ paths:
       summary: Approve CleanRooms
       tags:
       - Comply
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/collaborations":
     get:
       operationId: Collaborations_index
@@ -18451,6 +18590,9 @@ paths:
       summary: Index Collaborations
       tags:
       - Agree
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
     post:
       operationId: Collaborations_create
       requestBody:
@@ -18507,6 +18649,9 @@ paths:
       summary: Create Collaborations
       tags:
       - Agree
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/collaborations/{id}":
     get:
       operationId: Collaborations_show
@@ -18565,6 +18710,9 @@ paths:
       summary: Show Collaborations
       tags:
       - Agree
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/collaborations/{id}/invite":
     post:
       operationId: Collaborations_invite
@@ -18629,6 +18777,9 @@ paths:
       summary: Invite Collaborations
       tags:
       - Agree
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/collaborations/{id}/membership":
     delete:
       operationId: Collaborations_membership
@@ -18745,6 +18896,9 @@ paths:
       summary: Sign Collaborations
       tags:
       - Agree
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/compensation":
     get:
       operationId: Compensation_index
@@ -19123,6 +19277,9 @@ paths:
       summary: Index Connections
       tags:
       - Connect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/connections/{connection_id}/policies/{policy_id}/suspend":
     post:
       operationId: Connections_suspend_policy
@@ -19309,6 +19466,9 @@ paths:
       summary: Destroy Connections
       tags:
       - Connect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
     get:
       operationId: Connections_show
       parameters:
@@ -19366,6 +19526,9 @@ paths:
       summary: Show Connections
       tags:
       - Connect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/connections/{id}/suspend":
     post:
       operationId: Connections_suspend
@@ -19424,6 +19587,9 @@ paths:
       summary: Suspend Connections
       tags:
       - Connect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/connections/{id}/unsuspend":
     post:
       operationId: Connections_unsuspend
@@ -19482,6 +19648,9 @@ paths:
       summary: Unsuspend Connections
       tags:
       - Connect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/connectors":
     get:
       operationId: Connectors_index
@@ -20110,6 +20279,11 @@ paths:
       summary: Create ConsentSessions
       tags:
       - Consent
+      x-overturo-sdks:
+      - package: "@overturo/js (npm)"
+        repository: https://github.com/overturo/js
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/consent_sessions/{session_token}":
     get:
       operationId: ConsentSessions_show
@@ -20168,6 +20342,11 @@ paths:
       summary: Show ConsentSessions
       tags:
       - Consent
+      x-overturo-sdks:
+      - package: "@overturo/js (npm)"
+        repository: https://github.com/overturo/js
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/consent_sessions/{session_token}/attestations":
     get:
       operationId: ConsentSessions_attestations
@@ -20284,6 +20463,9 @@ paths:
       summary: Authorize ConsentSessions
       tags:
       - Consent
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/consent_sessions/{session_token}/claims":
     get:
       operationId: ConsentSessions_claims
@@ -20521,6 +20703,11 @@ paths:
       summary: Exchange ConsentSessions
       tags:
       - Consent
+      x-overturo-sdks:
+      - package: "@overturo/js (npm)"
+        repository: https://github.com/overturo/js
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/consent_sessions/{session_token}/verify":
     get:
       operationId: ConsentSessions_verify
@@ -20579,6 +20766,9 @@ paths:
       summary: Verify ConsentSessions
       tags:
       - Consent
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/credential_offers":
     post:
       operationId: CredentialOffers_create
@@ -20732,6 +20922,9 @@ paths:
       summary: Index Credentials
       tags:
       - Verify
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
     post:
       operationId: Credentials_create
       requestBody:
@@ -20788,6 +20981,9 @@ paths:
       summary: Create Credentials
       tags:
       - Verify
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/credentials/{id}":
     delete:
       operationId: Credentials_destroy
@@ -20846,6 +21042,9 @@ paths:
       summary: Destroy Credentials
       tags:
       - Verify
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
     get:
       operationId: Credentials_show
       parameters:
@@ -20903,6 +21102,9 @@ paths:
       summary: Show Credentials
       tags:
       - Verify
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/credentials/{id}/wallet_pass":
     get:
       operationId: Credentials_wallet_pass
@@ -20961,6 +21163,9 @@ paths:
       summary: Wallet pass Credentials
       tags:
       - Verify
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/data/{scope}":
     get:
       operationId: DataProxy_show
@@ -21069,6 +21274,9 @@ paths:
       summary: Index DataLicenses
       tags:
       - Protect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
     post:
       operationId: DataLicenses_create
       requestBody:
@@ -21125,6 +21333,9 @@ paths:
       summary: Create DataLicenses
       tags:
       - Protect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/data_licenses/{id}":
     get:
       operationId: DataLicenses_show
@@ -21183,6 +21394,9 @@ paths:
       summary: Show DataLicenses
       tags:
       - Protect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/data_licenses/{id}/terminate":
     post:
       operationId: DataLicenses_terminate
@@ -21241,6 +21455,9 @@ paths:
       summary: Terminate DataLicenses
       tags:
       - Protect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/data_offers":
     get:
       operationId: DataOffers_index
@@ -21509,6 +21726,9 @@ paths:
       summary: Index DataRequests
       tags:
       - Protect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
     post:
       operationId: DataRequests_create
       requestBody:
@@ -21565,6 +21785,9 @@ paths:
       summary: Create DataRequests
       tags:
       - Protect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/data_requests/{id}":
     get:
       operationId: DataRequests_show
@@ -21623,6 +21846,9 @@ paths:
       summary: Show DataRequests
       tags:
       - Protect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/data_transitions":
     get:
       operationId: DataTransitions_index
@@ -22014,6 +22240,11 @@ paths:
       summary: Create Decisions
       tags:
       - Agree
+      x-overturo-sdks:
+      - package: "@overturo/js (npm)"
+        repository: https://github.com/overturo/js
+      - package: overturo (PyPI)
+        repository: https://github.com/overturo/sdk-python
   "/api/v1/decisions/by-escalation/{escalation_prefix_id}/wait":
     get:
       operationId: Decisions_wait
@@ -22073,6 +22304,9 @@ paths:
       summary: Wait Decisions
       tags:
       - Agree
+      x-overturo-sdks:
+      - package: overturo (PyPI)
+        repository: https://github.com/overturo/sdk-python
   "/api/v1/decisions/flows/{flow_id}/disclosures":
     get:
       description: Returns what the decision screen will present for this flow — purposes
@@ -22144,6 +22378,15 @@ paths:
       summary: Preview a flow's disclosures
       tags:
       - Agree
+      x-overturo-sdks:
+      - package: "@overturo/js (npm)"
+        repository: https://github.com/overturo/js
+      - package: overturo (PyPI)
+        repository: https://github.com/overturo/sdk-python
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
+      - package: "@overturo/sdk (npm)"
+        repository: https://github.com/overturo/sdk
   "/api/v1/decisions/harness/principals":
     get:
       operationId: Decisions_harness_principals
@@ -22254,6 +22497,11 @@ paths:
       summary: Show Decisions
       tags:
       - Agree
+      x-overturo-sdks:
+      - package: "@overturo/js (npm)"
+        repository: https://github.com/overturo/js
+      - package: overturo (PyPI)
+        repository: https://github.com/overturo/sdk-python
   "/api/v1/decisions/{session_token}/authorize":
     post:
       operationId: Decisions_authorize
@@ -22370,6 +22618,9 @@ paths:
       summary: Cancel Decisions
       tags:
       - Agree
+      x-overturo-sdks:
+      - package: "@overturo/js (npm)"
+        repository: https://github.com/overturo/js
   "/api/v1/decisions/{session_token}/config":
     get:
       operationId: Decisions_sdk_config
@@ -22665,6 +22916,9 @@ paths:
       summary: Exchange Decisions
       tags:
       - Agree
+      x-overturo-sdks:
+      - package: "@overturo/js (npm)"
+        repository: https://github.com/overturo/js
   "/api/v1/decisions/{session_token}/verify":
     get:
       operationId: Decisions_verify
@@ -22883,6 +23137,9 @@ paths:
       summary: Index Delegations
       tags:
       - Delegate
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
     post:
       operationId: Delegations_create
       requestBody:
@@ -22939,6 +23196,9 @@ paths:
       summary: Create Delegations
       tags:
       - Delegate
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/delegations/{id}":
     get:
       operationId: Delegations_show
@@ -22997,6 +23257,9 @@ paths:
       summary: Show Delegations
       tags:
       - Delegate
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
     patch:
       operationId: Delegations_update
       parameters:
@@ -23060,6 +23323,9 @@ paths:
       summary: Update Delegations
       tags:
       - Delegate
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
     put:
       operationId: Delegations_update_put
       parameters:
@@ -23181,6 +23447,9 @@ paths:
       summary: Revoke Delegations
       tags:
       - Delegate
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/device_ceremonies":
     post:
       operationId: DeviceCeremonies_create
@@ -23907,6 +24176,13 @@ paths:
       summary: Create DisclosureReceipts
       tags:
       - Delegate
+      x-overturo-sdks:
+      - package: overturo (PyPI)
+        repository: https://github.com/overturo/sdk-python
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
+      - package: "@overturo/sdk (npm)"
+        repository: https://github.com/overturo/sdk
   "/api/v1/emergency_authorities":
     get:
       operationId: EmergencyAuthorities_index
@@ -24462,6 +24738,9 @@ paths:
       summary: Index Entitlements
       tags:
       - Consent
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/entitlements/{id}":
     get:
       operationId: Entitlements_show
@@ -24520,6 +24799,9 @@ paths:
       summary: Show Entitlements
       tags:
       - Consent
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/entitlements/{id}/verify":
     get:
       operationId: Entitlements_verify
@@ -24578,6 +24860,9 @@ paths:
       summary: Verify Entitlements
       tags:
       - Consent
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/evidence_packages/{id}":
     get:
       operationId: EvidencePackages_show
@@ -24636,6 +24921,9 @@ paths:
       summary: Show EvidencePackages
       tags:
       - Comply
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/governance/dashboard":
     get:
       operationId: Governance_dashboard
@@ -25180,6 +25468,11 @@ paths:
       summary: Create Authorize
       tags:
       - Other
+      x-overturo-sdks:
+      - package: overturo (PyPI)
+        repository: https://github.com/overturo/sdk-python
+      - package: "@overturo/sdk (npm)"
+        repository: https://github.com/overturo/sdk
   "/api/v1/grants/{id}/denials":
     get:
       operationId: Oap_Denials_principal_index
@@ -25470,6 +25763,11 @@ paths:
       summary: Refresh Tokens
       tags:
       - Other
+      x-overturo-sdks:
+      - package: overturo (PyPI)
+        repository: https://github.com/overturo/sdk-python
+      - package: "@overturo/sdk (npm)"
+        repository: https://github.com/overturo/sdk
   "/api/v1/health":
     get:
       operationId: Health_show
@@ -26896,6 +27194,9 @@ paths:
       summary: Show Me
       tags:
       - Core
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/me/standing_mandates":
     get:
       operationId: Me_StandingMandates_index
@@ -27505,6 +27806,11 @@ paths:
       summary: Create Attestations
       tags:
       - Other
+      x-overturo-sdks:
+      - package: overturo (PyPI)
+        repository: https://github.com/overturo/sdk-python
+      - package: "@overturo/sdk (npm)"
+        repository: https://github.com/overturo/sdk
   "/api/v1/oap/attestations/heartbeat":
     post:
       operationId: Oap_Attestations_heartbeat
@@ -27556,6 +27862,11 @@ paths:
       summary: Heartbeat Attestations
       tags:
       - Other
+      x-overturo-sdks:
+      - package: overturo (PyPI)
+        repository: https://github.com/overturo/sdk-python
+      - package: "@overturo/sdk (npm)"
+        repository: https://github.com/overturo/sdk
   "/api/v1/oap/currencies":
     get:
       operationId: Oap_Currencies_show
@@ -27708,6 +28019,11 @@ paths:
       summary: Create EscalationsCreate
       tags:
       - Other
+      x-overturo-sdks:
+      - package: overturo (PyPI)
+        repository: https://github.com/overturo/sdk-python
+      - package: "@overturo/sdk (npm)"
+        repository: https://github.com/overturo/sdk
   "/api/v1/oap/escalations/{id}":
     get:
       operationId: Oap_Escalations_show
@@ -28158,6 +28474,11 @@ paths:
       summary: Create Revocations
       tags:
       - Other
+      x-overturo-sdks:
+      - package: overturo (PyPI)
+        repository: https://github.com/overturo/sdk-python
+      - package: "@overturo/sdk (npm)"
+        repository: https://github.com/overturo/sdk
   "/api/v1/oap/version":
     get:
       operationId: Oap_Version_show
@@ -28731,6 +29052,9 @@ paths:
       summary: Index Policies
       tags:
       - Protect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
     post:
       operationId: Policies_create
       requestBody:
@@ -28787,6 +29111,9 @@ paths:
       summary: Create Policies
       tags:
       - Protect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/policies/{id}":
     delete:
       operationId: Policies_destroy
@@ -28845,6 +29172,9 @@ paths:
       summary: Destroy Policies
       tags:
       - Protect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
     get:
       operationId: Policies_show
       parameters:
@@ -28902,6 +29232,9 @@ paths:
       summary: Show Policies
       tags:
       - Protect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
     patch:
       operationId: Policies_update
       parameters:
@@ -28959,6 +29292,9 @@ paths:
       summary: Update Policies
       tags:
       - Protect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
     put:
       operationId: Policies_update_put
       parameters:
@@ -29074,6 +29410,9 @@ paths:
       summary: Activate Policies
       tags:
       - Protect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/policies/{id}/invite":
     post:
       operationId: Policies_invite
@@ -29248,6 +29587,9 @@ paths:
       summary: Revoke Policies
       tags:
       - Protect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/policies/{id}/share":
     post:
       operationId: Policies_share
@@ -29312,6 +29654,9 @@ paths:
       summary: Share Policies
       tags:
       - Protect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/policies/{id}/shares":
     get:
       operationId: Policies_shares
@@ -29421,6 +29766,9 @@ paths:
       summary: Create Presentations
       tags:
       - Verify
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/presentations/{id}":
     get:
       operationId: Presentations_show
@@ -29479,6 +29827,9 @@ paths:
       summary: Show Presentations
       tags:
       - Verify
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/presentations/{id}/present":
     patch:
       operationId: Presentations_present
@@ -29537,6 +29888,9 @@ paths:
       summary: Present Presentations
       tags:
       - Verify
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/preview_tokens":
     post:
       operationId: PreviewTokens_create
@@ -29595,6 +29949,9 @@ paths:
       summary: Create PreviewTokens
       tags:
       - Other
+      x-overturo-sdks:
+      - package: "@overturo/js (npm)"
+        repository: https://github.com/overturo/js
   "/api/v1/quorum_requests":
     get:
       operationId: QuorumRequests_index
@@ -29646,6 +30003,9 @@ paths:
       summary: Index QuorumRequests
       tags:
       - Other
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
     post:
       operationId: QuorumRequests_create
       requestBody:
@@ -29702,6 +30062,9 @@ paths:
       summary: Create QuorumRequests
       tags:
       - Other
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/quorum_requests/{id}":
     get:
       operationId: QuorumRequests_show
@@ -29760,6 +30123,9 @@ paths:
       summary: Show QuorumRequests
       tags:
       - Other
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/quorum_requests/{id}/vote":
     post:
       operationId: QuorumRequests_vote
@@ -29824,6 +30190,9 @@ paths:
       summary: Vote QuorumRequests
       tags:
       - Other
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/reputation":
     get:
       operationId: Reputation_show
@@ -30416,6 +30785,9 @@ paths:
       summary: Read your residency posture
       tags:
       - Other
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/residency_posture/evidence_package":
     post:
       description: Produces a signed, anchored, independently-verifiable Proof of
@@ -30470,6 +30842,9 @@ paths:
       summary: Export Proof of Residency
       tags:
       - Other
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/security_event_streams":
     get:
       operationId: SecurityEventStreams_index
@@ -30521,6 +30896,9 @@ paths:
       summary: Index SecurityEventStreams
       tags:
       - Delegate
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
     post:
       operationId: SecurityEventStreams_create
       requestBody:
@@ -30577,6 +30955,9 @@ paths:
       summary: Create SecurityEventStreams
       tags:
       - Delegate
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/security_event_streams/{id}":
     delete:
       operationId: SecurityEventStreams_destroy
@@ -30635,6 +31016,9 @@ paths:
       summary: Destroy SecurityEventStreams
       tags:
       - Delegate
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
     get:
       operationId: SecurityEventStreams_show
       parameters:
@@ -30692,6 +31076,9 @@ paths:
       summary: Show SecurityEventStreams
       tags:
       - Delegate
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
     patch:
       operationId: SecurityEventStreams_update
       parameters:
@@ -30755,6 +31142,9 @@ paths:
       summary: Update SecurityEventStreams
       tags:
       - Delegate
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
     put:
       operationId: SecurityEventStreams_update_put
       parameters:
@@ -30876,6 +31266,9 @@ paths:
       summary: Poll SecurityEventStreams
       tags:
       - Delegate
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
     post:
       operationId: SecurityEventStreams_poll_ack
       parameters:
@@ -30991,6 +31384,9 @@ paths:
       summary: Verify SecurityEventStreams
       tags:
       - Delegate
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/shared_with_me":
     get:
       operationId: SharedWithMe_index
@@ -31322,6 +31718,9 @@ paths:
       summary: Read the transfer register
       tags:
       - Other
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/transfer_register/evidence_package":
     post:
       description: Produces a signed, anchored, independently-verifiable evidence
@@ -31376,6 +31775,9 @@ paths:
       summary: Export verifiable transfer evidence
       tags:
       - Other
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/transfers":
     get:
       operationId: Transfers_index
@@ -31427,6 +31829,9 @@ paths:
       summary: Index Transfers
       tags:
       - Protect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
     post:
       operationId: Transfers_create
       requestBody:
@@ -31483,6 +31888,9 @@ paths:
       summary: Create Transfers
       tags:
       - Protect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/transfers/{id}":
     get:
       operationId: Transfers_show
@@ -31541,6 +31949,9 @@ paths:
       summary: Show Transfers
       tags:
       - Protect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/transfers/{id}/cancel":
     post:
       operationId: Transfers_cancel
@@ -31599,6 +32010,9 @@ paths:
       summary: Cancel Transfers
       tags:
       - Protect
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/transparency_records/{id}":
     get:
       operationId: TransparencyRecords_show
@@ -31766,6 +32180,9 @@ paths:
       summary: Index TrustLevels
       tags:
       - Consent
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/trust_levels/{id}":
     get:
       operationId: TrustLevels_show
@@ -31824,6 +32241,9 @@ paths:
       summary: Show TrustLevels
       tags:
       - Consent
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/trust_levels/{trust_ladder_id}/trigger":
     post:
       operationId: TrustLevels_trigger
@@ -31888,6 +32308,9 @@ paths:
       summary: Trigger TrustLevels
       tags:
       - Consent
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/trust_scores":
     get:
       operationId: TrustScores_index
@@ -31939,6 +32362,9 @@ paths:
       summary: Index TrustScores
       tags:
       - Verify
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/trust_scores/query":
     post:
       operationId: TrustScores_query
@@ -31990,6 +32416,9 @@ paths:
       summary: Query TrustScores
       tags:
       - Verify
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/users":
     post:
       operationId: Users_create
@@ -32257,6 +32686,9 @@ paths:
       summary: Create VerificationSessions
       tags:
       - Verify
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/verification_sessions/{id}":
     get:
       operationId: VerificationSessions_show
@@ -32315,6 +32747,9 @@ paths:
       summary: Show VerificationSessions
       tags:
       - Verify
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/verifications/{id}":
     get:
       operationId: Verifications_show
@@ -32526,6 +32961,9 @@ paths:
       summary: Index Vouches
       tags:
       - Verify
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
     post:
       operationId: Vouches_create
       requestBody:
@@ -32582,6 +33020,9 @@ paths:
       summary: Create Vouches
       tags:
       - Verify
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/vouches/received":
     get:
       operationId: Vouches_received
@@ -32633,6 +33074,9 @@ paths:
       summary: Received Vouches
       tags:
       - Verify
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/vouches/{id}":
     delete:
       operationId: Vouches_destroy
@@ -32691,6 +33135,9 @@ paths:
       summary: Destroy Vouches
       tags:
       - Verify
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
     get:
       operationId: Vouches_show
       parameters:
@@ -32748,6 +33195,9 @@ paths:
       summary: Show Vouches
       tags:
       - Verify
+      x-overturo-sdks:
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
   "/api/v1/wallet":
     get:
       operationId: Wallet_index
