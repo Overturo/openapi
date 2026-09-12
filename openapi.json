@@ -1,6 +1,62 @@
 {
   "components": {
     "schemas": {
+      "Account": {
+        "additionalProperties": true,
+        "properties": {
+          "account_users": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "user_id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "user_id"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "owner_id": {
+            "type": "string"
+          },
+          "personal": {
+            "type": "boolean"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "owner_id"
+        ],
+        "type": "object"
+      },
+      "AccountList": {
+        "items": {
+          "$ref": "#/components/schemas/Account"
+        },
+        "type": "array"
+      },
       "AgentIdentity": {
         "properties": {
           "agent_type": {
@@ -33,6 +89,9 @@
             "type": "string"
           }
         },
+        "required": [
+          "id"
+        ],
         "type": "object"
       },
       "AgentIdentityList": {
@@ -44,6 +103,21 @@
             "type": "array"
           }
         },
+        "required": [
+          "agent_identities"
+        ],
+        "type": "object"
+      },
+      "AgentIdentityMessage": {
+        "additionalProperties": true,
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "message"
+        ],
         "type": "object"
       },
       "Agreement": {
@@ -76,6 +150,9 @@
             "type": "string"
           }
         },
+        "required": [
+          "id"
+        ],
         "type": "object"
       },
       "AgreementList": {
@@ -87,6 +164,9 @@
             "type": "array"
           }
         },
+        "required": [
+          "agreements"
+        ],
         "type": "object"
       },
       "AllowedOrigin": {
@@ -124,6 +204,72 @@
             "type": "array"
           }
         },
+        "type": "object"
+      },
+      "AnchorReceipt": {
+        "additionalProperties": true,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "receipt_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "type": "string"
+          },
+          "witness_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "witness_key_version": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "witness_signature": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "witnessed_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "status"
+        ],
+        "type": "object"
+      },
+      "AnchorReceipts": {
+        "additionalProperties": true,
+        "properties": {
+          "anchor_id": {
+            "type": "string"
+          },
+          "receipts": {
+            "items": {
+              "$ref": "#/components/schemas/AnchorReceipt"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "anchor_id",
+          "receipts"
+        ],
         "type": "object"
       },
       "ApiToken": {
@@ -196,7 +342,146 @@
         },
         "type": "object"
       },
+      "ApplicationEnvelope": {
+        "additionalProperties": true,
+        "properties": {
+          "application": {
+            "$ref": "#/components/schemas/ApplicationSummary"
+          }
+        },
+        "required": [
+          "application"
+        ],
+        "type": "object"
+      },
+      "ApplicationSummary": {
+        "additionalProperties": true,
+        "properties": {
+          "active": {
+            "type": "boolean"
+          },
+          "application_type": {
+            "type": "string"
+          },
+          "environment": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "visibility": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ],
+        "type": "object"
+      },
+      "AuditAnchor": {
+        "additionalProperties": true,
+        "properties": {
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "format_version": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "issuer_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "issuer_key_fingerprint": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "key_version": {
+            "type": "string"
+          },
+          "merkle_root": {
+            "type": "string"
+          },
+          "previous_anchor_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "record_count": {
+            "type": "integer"
+          },
+          "sequence_from": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "sequence_to": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "signature": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "merkle_root",
+          "signature",
+          "key_version"
+        ],
+        "type": "object"
+      },
+      "AuditAnchorEnvelope": {
+        "additionalProperties": true,
+        "properties": {
+          "anchor": {
+            "$ref": "#/components/schemas/AuditAnchor"
+          }
+        },
+        "required": [
+          "anchor"
+        ],
+        "type": "object"
+      },
       "AuthorizationReceipt": {
+        "anyOf": [
+          {
+            "required": [
+              "authorization_receipt"
+            ]
+          },
+          {
+            "required": [
+              "receipt",
+              "signature"
+            ]
+          }
+        ],
         "properties": {
           "authorization_receipt": {
             "additionalProperties": true,
@@ -278,6 +563,37 @@
         ],
         "type": "object"
       },
+      "CastQuorumVoteRequest": {
+        "additionalProperties": true,
+        "properties": {
+          "comment": {
+            "type": "string"
+          },
+          "vote": {
+            "enum": [
+              "approve",
+              "deny"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "vote"
+        ],
+        "type": "object"
+      },
+      "CleanRoomEnvelope": {
+        "additionalProperties": true,
+        "properties": {
+          "clean_room": {
+            "$ref": "#/components/schemas/CleanRoomEnvironment"
+          }
+        },
+        "required": [
+          "clean_room"
+        ],
+        "type": "object"
+      },
       "CleanRoomEnvironment": {
         "properties": {
           "agreement_id": {
@@ -305,6 +621,9 @@
             "type": "string"
           }
         },
+        "required": [
+          "id"
+        ],
         "type": "object"
       },
       "CleanRoomList": {
@@ -316,6 +635,602 @@
             "type": "array"
           }
         },
+        "required": [
+          "clean_rooms"
+        ],
+        "type": "object"
+      },
+      "CleanRoomQuery": {
+        "additionalProperties": true,
+        "properties": {
+          "clean_room_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "completed_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "computation_type": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "submitted_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "status",
+          "computation_type"
+        ],
+        "type": "object"
+      },
+      "CleanRoomQueryDetail": {
+        "additionalProperties": true,
+        "properties": {
+          "clean_room_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "completed_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "computation_type": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "privacy_parameters": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "query_definition": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "result": {
+            "additionalProperties": true,
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "status": {
+            "type": "string"
+          },
+          "submitted_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "status"
+        ],
+        "type": "object"
+      },
+      "CleanRoomQueryDetailEnvelope": {
+        "additionalProperties": true,
+        "properties": {
+          "query": {
+            "$ref": "#/components/schemas/CleanRoomQueryDetail"
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "type": "object"
+      },
+      "CleanRoomQueryEnvelope": {
+        "additionalProperties": true,
+        "properties": {
+          "query": {
+            "$ref": "#/components/schemas/CleanRoomQuery"
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "type": "object"
+      },
+      "CleanRoomQueryList": {
+        "additionalProperties": true,
+        "properties": {
+          "queries": {
+            "items": {
+              "$ref": "#/components/schemas/CleanRoomQuery"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "queries"
+        ],
+        "type": "object"
+      },
+      "Collaboration": {
+        "additionalProperties": true,
+        "properties": {
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "initiator_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "member_count": {
+            "type": "integer"
+          },
+          "signed_count": {
+            "type": "integer"
+          },
+          "status": {
+            "type": "string"
+          },
+          "terms": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "status"
+        ],
+        "type": "object"
+      },
+      "CollaborationDetail": {
+        "additionalProperties": true,
+        "properties": {
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "initiator_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "member_count": {
+            "type": "integer"
+          },
+          "memberships": {
+            "items": {
+              "$ref": "#/components/schemas/CollaborationMembership"
+            },
+            "type": "array"
+          },
+          "signed_count": {
+            "type": "integer"
+          },
+          "status": {
+            "type": "string"
+          },
+          "terms": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "status"
+        ],
+        "type": "object"
+      },
+      "CollaborationDetailEnvelope": {
+        "additionalProperties": true,
+        "properties": {
+          "collaboration": {
+            "$ref": "#/components/schemas/CollaborationDetail"
+          }
+        },
+        "required": [
+          "collaboration"
+        ],
+        "type": "object"
+      },
+      "CollaborationEnvelope": {
+        "additionalProperties": true,
+        "properties": {
+          "collaboration": {
+            "$ref": "#/components/schemas/Collaboration"
+          }
+        },
+        "required": [
+          "collaboration"
+        ],
+        "type": "object"
+      },
+      "CollaborationList": {
+        "additionalProperties": true,
+        "properties": {
+          "collaborations": {
+            "items": {
+              "$ref": "#/components/schemas/Collaboration"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "collaborations"
+        ],
+        "type": "object"
+      },
+      "CollaborationMembership": {
+        "additionalProperties": true,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "revoked_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "role": {
+            "type": "string"
+          },
+          "shared_data_categories": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "signed_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "type": "string"
+          },
+          "user_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "role",
+          "status"
+        ],
+        "type": "object"
+      },
+      "CollaborationMembershipEnvelope": {
+        "additionalProperties": true,
+        "properties": {
+          "membership": {
+            "$ref": "#/components/schemas/CollaborationMembership"
+          }
+        },
+        "required": [
+          "membership"
+        ],
+        "type": "object"
+      },
+      "ConfirmPortabilityTransferRequest": {
+        "additionalProperties": true,
+        "properties": {
+          "data_hash": {
+            "type": "string"
+          },
+          "transfer_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "transfer_id"
+        ],
+        "type": "object"
+      },
+      "Connection": {
+        "additionalProperties": true,
+        "properties": {
+          "application_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "application_name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "connected_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "last_active_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "type": "string"
+          },
+          "trust_tier": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "status"
+        ],
+        "type": "object"
+      },
+      "ConnectionDetail": {
+        "additionalProperties": true,
+        "properties": {
+          "active_policies": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "application_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "application_name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "connected_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "disconnected_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "last_active_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "type": "string"
+          },
+          "suspensions": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "trust_tier": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "updated_at": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "status"
+        ],
+        "type": "object"
+      },
+      "ConnectionDetailEnvelope": {
+        "additionalProperties": true,
+        "properties": {
+          "connection": {
+            "$ref": "#/components/schemas/ConnectionDetail"
+          }
+        },
+        "required": [
+          "connection"
+        ],
+        "type": "object"
+      },
+      "ConnectionDisconnected": {
+        "additionalProperties": true,
+        "properties": {
+          "connection": {
+            "additionalProperties": true,
+            "properties": {
+              "disconnected_at": {
+                "format": "date-time",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "id": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "status"
+            ],
+            "type": "object"
+          },
+          "warnings": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "connection"
+        ],
+        "type": "object"
+      },
+      "ConnectionList": {
+        "additionalProperties": true,
+        "properties": {
+          "connections": {
+            "items": {
+              "$ref": "#/components/schemas/Connection"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "connections"
+        ],
+        "type": "object"
+      },
+      "ConsentAuthorized": {
+        "additionalProperties": true,
+        "properties": {
+          "consent_token": {
+            "type": "string"
+          },
+          "consent_token_expires_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "consent_token"
+        ],
+        "type": "object"
+      },
+      "ConsentExchange": {
+        "additionalProperties": true,
+        "properties": {
+          "access_token": {
+            "type": "string"
+          },
+          "application_id": {
+            "type": "string"
+          },
+          "attestations": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "claims": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "consent_transaction_id": {
+            "type": "string"
+          },
+          "credentials": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "expires_in": {
+            "type": "integer"
+          },
+          "provenance": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "scope": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "token_type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "claims"
+        ],
         "type": "object"
       },
       "ConsentSession": {
@@ -351,6 +1266,34 @@
             "type": "string"
           }
         },
+        "required": [
+          "id"
+        ],
+        "type": "object"
+      },
+      "ConsentVerification": {
+        "additionalProperties": true,
+        "properties": {
+          "expires_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "flow_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "valid": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "valid"
+        ],
         "type": "object"
       },
       "CreateAgentIdentityRequest": {
@@ -431,6 +1374,27 @@
         ],
         "type": "object"
       },
+      "CreateCleanRoomQueryRequest": {
+        "additionalProperties": true,
+        "properties": {
+          "computation_type": {
+            "type": "string"
+          },
+          "privacy_parameters": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "query_definition": {
+            "additionalProperties": true,
+            "type": "object"
+          }
+        },
+        "required": [
+          "computation_type",
+          "query_definition"
+        ],
+        "type": "object"
+      },
       "CreateCleanRoomRequest": {
         "properties": {
           "agreement_id": {
@@ -451,6 +1415,25 @@
           "agreement_id",
           "participants"
         ],
+        "type": "object"
+      },
+      "CreateCollaborationRequest": {
+        "additionalProperties": true,
+        "properties": {
+          "application_id": {
+            "type": "string"
+          },
+          "participant_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "terms": {
+            "additionalProperties": true,
+            "type": "object"
+          }
+        },
         "type": "object"
       },
       "CreateConsentSessionRequest": {
@@ -478,6 +1461,47 @@
         },
         "required": [
           "flow_id"
+        ],
+        "type": "object"
+      },
+      "CreateCredentialRequest": {
+        "additionalProperties": true,
+        "properties": {
+          "consent_transaction_id": {
+            "type": "string"
+          },
+          "credential_type": {
+            "type": "string"
+          },
+          "validity_days": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "consent_transaction_id",
+          "credential_type"
+        ],
+        "type": "object"
+      },
+      "CreateDataLicenseRequest": {
+        "additionalProperties": true,
+        "properties": {
+          "agreement_id": {
+            "type": "string"
+          },
+          "application_id": {
+            "type": "string"
+          },
+          "max_access_count": {
+            "type": "integer"
+          },
+          "terms": {
+            "additionalProperties": true,
+            "type": "object"
+          }
+        },
+        "required": [
+          "agreement_id"
         ],
         "type": "object"
       },
@@ -525,6 +1549,47 @@
         ],
         "type": "object"
       },
+      "CreateDelegationRequest": {
+        "additionalProperties": true,
+        "properties": {
+          "delegate_id": {
+            "type": "string"
+          },
+          "delegation_grant": {
+            "additionalProperties": true,
+            "properties": {
+              "allow_sub_delegation": {
+                "type": "boolean"
+              },
+              "delegated_scopes": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "delegation_type": {
+                "type": "string"
+              },
+              "expires_at": {
+                "format": "date-time",
+                "type": "string"
+              },
+              "max_actions_per_day": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "delegation_type"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "delegate_id",
+          "delegation_grant"
+        ],
+        "type": "object"
+      },
       "CreateDisclosureReceiptRequest": {
         "properties": {
           "agent_id": {
@@ -549,6 +1614,29 @@
           "flow_id",
           "agent_id",
           "disclosed_at"
+        ],
+        "type": "object"
+      },
+      "CreateDsarRequest": {
+        "additionalProperties": true,
+        "properties": {
+          "application_id": {
+            "type": "string"
+          },
+          "dsar_type": {
+            "type": "string"
+          },
+          "scope": {
+            "type": [
+              "array",
+              "object",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "application_id",
+          "dsar_type"
         ],
         "type": "object"
       },
@@ -601,6 +1689,29 @@
         ],
         "type": "object"
       },
+      "CreatePortabilityTransferRequest": {
+        "additionalProperties": true,
+        "properties": {
+          "destination_application_id": {
+            "type": "string"
+          },
+          "negotiated_format": {
+            "type": "string"
+          },
+          "policy_id": {
+            "type": "string"
+          },
+          "source_application_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "policy_id",
+          "source_application_id",
+          "destination_application_id"
+        ],
+        "type": "object"
+      },
       "CreatePresentationRequestBody": {
         "additionalProperties": false,
         "properties": {
@@ -632,6 +1743,532 @@
         },
         "required": [
           "credential_types"
+        ],
+        "type": "object"
+      },
+      "CreatePreviewTokenRequest": {
+        "additionalProperties": true,
+        "properties": {
+          "device": {
+            "type": "string"
+          },
+          "locale": {
+            "type": "string"
+          },
+          "previewable_id": {
+            "description": "The public id (or numeric id) of the previewed record.",
+            "type": "string"
+          },
+          "previewable_type": {
+            "description": "What to preview: a flow template, a setup session, or a flow.",
+            "enum": [
+              "template",
+              "setup_session",
+              "flow"
+            ],
+            "type": "string"
+          },
+          "theme": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "previewable_type",
+          "previewable_id"
+        ],
+        "type": "object"
+      },
+      "CreateQuorumRequestRequest": {
+        "additionalProperties": true,
+        "properties": {
+          "action_payload": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "action_type": {
+            "type": "string"
+          },
+          "agreement_id": {
+            "type": "string"
+          },
+          "deadline_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "justification": {
+            "type": "string"
+          },
+          "required_approvals": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "agreement_id",
+          "action_type"
+        ],
+        "type": "object"
+      },
+      "CreateSecurityEventStreamRequest": {
+        "additionalProperties": true,
+        "properties": {
+          "delivery_method": {
+            "type": "string"
+          },
+          "endpoint_url": {
+            "type": "string"
+          },
+          "events_requested": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "delivery_method"
+        ],
+        "type": "object"
+      },
+      "CreateVerificationSessionRequest": {
+        "additionalProperties": true,
+        "properties": {
+          "consent_transaction_id": {
+            "type": "string"
+          },
+          "provider_name": {
+            "type": "string"
+          },
+          "verification_requirement_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "verification_requirement_id"
+        ],
+        "type": "object"
+      },
+      "CreateVouchRequest": {
+        "additionalProperties": true,
+        "properties": {
+          "claim_data": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "claim_template_id": {
+            "type": "string"
+          },
+          "confidence": {
+            "type": "string"
+          },
+          "recipient_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "recipient_id",
+          "claim_template_id"
+        ],
+        "type": "object"
+      },
+      "CreateWebhookSubscriptionRequest": {
+        "additionalProperties": true,
+        "properties": {
+          "webhook_subscription": {
+            "additionalProperties": true,
+            "properties": {
+              "enabled": {
+                "type": "boolean"
+              },
+              "events": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "url": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "url",
+              "events"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "webhook_subscription"
+        ],
+        "type": "object"
+      },
+      "Credential": {
+        "additionalProperties": true,
+        "properties": {
+          "claims_included": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "credential_type": {
+            "type": "string"
+          },
+          "expires_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "format": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "issued_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "credential_type",
+          "format",
+          "status"
+        ],
+        "type": "object"
+      },
+      "CredentialEnvelope": {
+        "additionalProperties": true,
+        "properties": {
+          "credential": {
+            "$ref": "#/components/schemas/Credential"
+          }
+        },
+        "required": [
+          "credential"
+        ],
+        "type": "object"
+      },
+      "CredentialIssued": {
+        "additionalProperties": true,
+        "properties": {
+          "c_nonce": {
+            "type": "string"
+          },
+          "c_nonce_expires_in": {
+            "type": "integer"
+          },
+          "credential": {
+            "type": "string"
+          },
+          "format": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "credential",
+          "format"
+        ],
+        "type": "object"
+      },
+      "CredentialList": {
+        "additionalProperties": true,
+        "properties": {
+          "credentials": {
+            "items": {
+              "$ref": "#/components/schemas/Credential"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "credentials"
+        ],
+        "type": "object"
+      },
+      "CredentialPresentation": {
+        "additionalProperties": true,
+        "properties": {
+          "attestation_hash": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "credential_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "disclosed_claims": {
+            "type": [
+              "array",
+              "object",
+              "null"
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "presented_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "type": "string"
+          },
+          "verification_result": {
+            "type": [
+              "object",
+              "string",
+              "null"
+            ]
+          },
+          "verified_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "status"
+        ],
+        "type": "object"
+      },
+      "CredentialPresentationEnvelope": {
+        "additionalProperties": true,
+        "properties": {
+          "credential_presentation": {
+            "$ref": "#/components/schemas/CredentialPresentation"
+          }
+        },
+        "required": [
+          "credential_presentation"
+        ],
+        "type": "object"
+      },
+      "CredentialRevoked": {
+        "additionalProperties": true,
+        "properties": {
+          "status": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status"
+        ],
+        "type": "object"
+      },
+      "CurrentUser": {
+        "additionalProperties": true,
+        "properties": {
+          "avatar_url": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "content": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sgid": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "type": "object"
+      },
+      "DataLicense": {
+        "additionalProperties": true,
+        "properties": {
+          "access_count": {
+            "type": "integer"
+          },
+          "agreement_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "compensation_total": {
+            "type": [
+              "number",
+              "string",
+              "null"
+            ]
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "max_access_count": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "status": {
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "user_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "violation_count": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "status"
+        ],
+        "type": "object"
+      },
+      "DataLicenseDetail": {
+        "additionalProperties": true,
+        "properties": {
+          "access_count": {
+            "type": "integer"
+          },
+          "access_log_count": {
+            "type": "integer"
+          },
+          "agreement_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "compensation_records_count": {
+            "type": "integer"
+          },
+          "compensation_total": {
+            "type": [
+              "number",
+              "string",
+              "null"
+            ]
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "last_accessed_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "max_access_count": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "status": {
+            "type": "string"
+          },
+          "terms": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "user_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "violation_count": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "status"
+        ],
+        "type": "object"
+      },
+      "DataLicenseDetailEnvelope": {
+        "additionalProperties": true,
+        "properties": {
+          "data_license": {
+            "$ref": "#/components/schemas/DataLicenseDetail"
+          }
+        },
+        "required": [
+          "data_license"
+        ],
+        "type": "object"
+      },
+      "DataLicenseEnvelope": {
+        "additionalProperties": true,
+        "properties": {
+          "data_license": {
+            "$ref": "#/components/schemas/DataLicense"
+          }
+        },
+        "required": [
+          "data_license"
+        ],
+        "type": "object"
+      },
+      "DataLicenseList": {
+        "additionalProperties": true,
+        "properties": {
+          "data_licenses": {
+            "items": {
+              "$ref": "#/components/schemas/DataLicense"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "data_licenses"
         ],
         "type": "object"
       },
@@ -703,6 +2340,355 @@
         ],
         "type": "object"
       },
+      "DecisionCancelled": {
+        "additionalProperties": true,
+        "properties": {
+          "status": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status"
+        ],
+        "type": "object"
+      },
+      "DecisionExchange": {
+        "additionalProperties": true,
+        "properties": {
+          "claims": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "status": {
+            "type": "string"
+          },
+          "verified_capabilities": {
+            "additionalProperties": true,
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "DecisionStatus": {
+        "additionalProperties": true,
+        "properties": {
+          "deadline_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "expires_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "kind": {
+            "type": "string"
+          },
+          "mode": {
+            "type": "string"
+          },
+          "session_token": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "subject_ref": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "session_token",
+          "kind",
+          "status"
+        ],
+        "type": "object"
+      },
+      "DecisionWait": {
+        "additionalProperties": true,
+        "properties": {
+          "decision": {
+            "additionalProperties": true,
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "retry_after": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "session_token": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "type": "string"
+          },
+          "wait_again": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "status",
+          "wait_again"
+        ],
+        "type": "object"
+      },
+      "DelegateAgentIdentityRequest": {
+        "additionalProperties": true,
+        "properties": {
+          "delegated_scopes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "expires_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "type": "object"
+      },
+      "Delegation": {
+        "additionalProperties": true,
+        "properties": {
+          "allow_sub_delegation": {
+            "type": "boolean"
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "delegate_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "delegated_scopes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "delegation_type": {
+            "type": "string"
+          },
+          "expires_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "max_actions_per_day": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "principal_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "revoked_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "starts_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "status",
+          "delegation_type"
+        ],
+        "type": "object"
+      },
+      "DelegationDetail": {
+        "additionalProperties": true,
+        "properties": {
+          "actions_today": {
+            "type": "integer"
+          },
+          "allow_sub_delegation": {
+            "type": "boolean"
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "delegate_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "delegated_scopes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "delegation_type": {
+            "type": "string"
+          },
+          "expires_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "last_action_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "max_actions_per_day": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "principal_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "revoked_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "starts_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "type": "string"
+          },
+          "total_actions": {
+            "type": "integer"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "status"
+        ],
+        "type": "object"
+      },
+      "DelegationDetailEnvelope": {
+        "additionalProperties": true,
+        "properties": {
+          "delegation_grant": {
+            "$ref": "#/components/schemas/DelegationDetail"
+          }
+        },
+        "required": [
+          "delegation_grant"
+        ],
+        "type": "object"
+      },
+      "DelegationEnvelope": {
+        "additionalProperties": true,
+        "properties": {
+          "delegation_grant": {
+            "$ref": "#/components/schemas/Delegation"
+          }
+        },
+        "required": [
+          "delegation_grant"
+        ],
+        "type": "object"
+      },
+      "DelegationList": {
+        "additionalProperties": true,
+        "properties": {
+          "delegation_grants": {
+            "items": {
+              "$ref": "#/components/schemas/Delegation"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "delegation_grants"
+        ],
+        "type": "object"
+      },
+      "DeletionQueued": {
+        "additionalProperties": true,
+        "properties": {
+          "pending_deletion_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "pending_deletion_at"
+        ],
+        "type": "object"
+      },
       "DisclosureReceipt": {
         "properties": {
           "disclosure_receipt": {
@@ -720,10 +2706,235 @@
             "type": "object"
           }
         },
+        "required": [
+          "disclosure_receipt"
+        ],
+        "type": "object"
+      },
+      "DsarRequest": {
+        "additionalProperties": true,
+        "properties": {
+          "acknowledged_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "agreement_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "application_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "completed_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "days_remaining": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "deadline_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "dsar_type": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "responded_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "scope": {
+            "type": [
+              "array",
+              "object",
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "dsar_type",
+          "status"
+        ],
+        "type": "object"
+      },
+      "DsarRequestEnvelope": {
+        "additionalProperties": true,
+        "properties": {
+          "dsar_request": {
+            "$ref": "#/components/schemas/DsarRequest"
+          },
+          "response": {
+            "additionalProperties": true,
+            "type": [
+              "object",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "dsar_request"
+        ],
+        "type": "object"
+      },
+      "DsarRequestList": {
+        "additionalProperties": true,
+        "properties": {
+          "dsar_requests": {
+            "items": {
+              "$ref": "#/components/schemas/DsarRequest"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "dsar_requests"
+        ],
         "type": "object"
       },
       "Empty": {
         "description": "Empty response (e.g. 204 No Content)",
+        "type": "object"
+      },
+      "Entitlement": {
+        "additionalProperties": true,
+        "properties": {
+          "application_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "consent_transaction_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "credential": {
+            "type": [
+              "object",
+              "string",
+              "null"
+            ]
+          },
+          "credential_type": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "expires_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "policy_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "revoked_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "status"
+        ],
+        "type": "object"
+      },
+      "EntitlementEnvelope": {
+        "additionalProperties": true,
+        "properties": {
+          "entitlement": {
+            "$ref": "#/components/schemas/Entitlement"
+          }
+        },
+        "required": [
+          "entitlement"
+        ],
+        "type": "object"
+      },
+      "EntitlementList": {
+        "additionalProperties": true,
+        "properties": {
+          "entitlements": {
+            "items": {
+              "$ref": "#/components/schemas/Entitlement"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "entitlements"
+        ],
+        "type": "object"
+      },
+      "EntitlementVerification": {
+        "additionalProperties": true,
+        "properties": {
+          "entitlement_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "valid": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "entitlement_id"
+        ],
         "type": "object"
       },
       "Error": {
@@ -752,6 +2963,19 @@
         },
         "required": [
           "error"
+        ],
+        "type": "object"
+      },
+      "EvidencePackageEnvelope": {
+        "additionalProperties": true,
+        "properties": {
+          "evidence_package": {
+            "additionalProperties": true,
+            "type": "object"
+          }
+        },
+        "required": [
+          "evidence_package"
         ],
         "type": "object"
       },
@@ -792,9 +3016,24 @@
             "type": "integer"
           }
         },
+        "required": [
+          "id"
+        ],
         "type": "object"
       },
       "FlowDisclosures": {
+        "additionalProperties": false,
+        "properties": {
+          "flow": {
+            "$ref": "#/components/schemas/FlowDisclosuresDocument"
+          }
+        },
+        "required": [
+          "flow"
+        ],
+        "type": "object"
+      },
+      "FlowDisclosuresDocument": {
         "additionalProperties": false,
         "description": "What a flow will ask a person to agree to, before any decision session exists. No personal data — the flow's own disclosure inventory, in the person's language.",
         "properties": {
@@ -1008,6 +3247,27 @@
             "type": "array"
           }
         },
+        "required": [
+          "flows"
+        ],
+        "type": "object"
+      },
+      "FlowPreviewResolution": {
+        "additionalProperties": true,
+        "properties": {
+          "resolved": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "validation": {
+            "additionalProperties": true,
+            "type": "object"
+          }
+        },
+        "required": [
+          "resolved",
+          "validation"
+        ],
         "type": "object"
       },
       "Health": {
@@ -1032,6 +3292,27 @@
           "status",
           "version",
           "region"
+        ],
+        "type": "object"
+      },
+      "InviteCollaboratorRequest": {
+        "additionalProperties": true,
+        "properties": {
+          "role": {
+            "type": "string"
+          },
+          "shared_data_categories": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "user_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "user_id"
         ],
         "type": "object"
       },
@@ -1077,6 +3358,18 @@
             "$ref": "#/components/schemas/Pagination"
           }
         },
+        "type": "object"
+      },
+      "Message": {
+        "additionalProperties": true,
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "message"
+        ],
         "type": "object"
       },
       "OpenapiDocument": {
@@ -1145,6 +3438,9 @@
             "type": "string"
           }
         },
+        "required": [
+          "id"
+        ],
         "type": "object"
       },
       "PolicyList": {
@@ -1156,6 +3452,285 @@
             "type": "array"
           }
         },
+        "required": [
+          "policies"
+        ],
+        "type": "object"
+      },
+      "PolicyParticipant": {
+        "additionalProperties": true,
+        "properties": {
+          "consented_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "invitation_email": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "role": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "user_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "role",
+          "status"
+        ],
+        "type": "object"
+      },
+      "PolicyParticipantEnvelope": {
+        "additionalProperties": true,
+        "properties": {
+          "participant": {
+            "$ref": "#/components/schemas/PolicyParticipant"
+          }
+        },
+        "required": [
+          "participant"
+        ],
+        "type": "object"
+      },
+      "PortabilityFormats": {
+        "additionalProperties": true,
+        "properties": {
+          "supported_export_formats": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "supported_import_formats": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "supported_export_formats",
+          "supported_import_formats"
+        ],
+        "type": "object"
+      },
+      "PortabilityTransfer": {
+        "additionalProperties": true,
+        "properties": {
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "destination_application_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "negotiated_format": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "policy_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "source_application_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "type": "string"
+          },
+          "user_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "status"
+        ],
+        "type": "object"
+      },
+      "PortabilityTransferDetail": {
+        "additionalProperties": true,
+        "properties": {
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "data_manifest": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "destination_application_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "metadata": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "negotiated_format": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "policy_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "source_application_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "source_confirmed_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "type": "string"
+          },
+          "transfer_completed_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "transfer_hash": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "transfer_started_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "user_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "status"
+        ],
+        "type": "object"
+      },
+      "PortabilityTransferDetailEnvelope": {
+        "additionalProperties": true,
+        "properties": {
+          "portability_transfer": {
+            "$ref": "#/components/schemas/PortabilityTransferDetail"
+          }
+        },
+        "required": [
+          "portability_transfer"
+        ],
+        "type": "object"
+      },
+      "PortabilityTransferEnvelope": {
+        "additionalProperties": true,
+        "properties": {
+          "portability_transfer": {
+            "additionalProperties": true,
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "status"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "portability_transfer"
+        ],
+        "type": "object"
+      },
+      "PortabilityTransferList": {
+        "additionalProperties": true,
+        "properties": {
+          "portability_transfers": {
+            "items": {
+              "$ref": "#/components/schemas/PortabilityTransfer"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "portability_transfers"
+        ],
+        "type": "object"
+      },
+      "PortabilityTransferRecordEnvelope": {
+        "additionalProperties": true,
+        "properties": {
+          "portability_transfer": {
+            "$ref": "#/components/schemas/PortabilityTransfer"
+          }
+        },
+        "required": [
+          "portability_transfer"
+        ],
         "type": "object"
       },
       "PresentationRequest": {
@@ -1206,6 +3781,197 @@
         "required": [
           "id",
           "status"
+        ],
+        "type": "object"
+      },
+      "PreviewToken": {
+        "additionalProperties": true,
+        "properties": {
+          "expires_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "preview_url": {
+            "type": "string"
+          },
+          "token": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "token",
+          "preview_url",
+          "expires_at"
+        ],
+        "type": "object"
+      },
+      "ProposeAgreementRequest": {
+        "additionalProperties": true,
+        "properties": {
+          "counterparty_id": {
+            "type": "string"
+          },
+          "template_id": {
+            "type": "string"
+          },
+          "terms": {
+            "additionalProperties": true,
+            "type": "object"
+          }
+        },
+        "required": [
+          "template_id"
+        ],
+        "type": "object"
+      },
+      "QuorumRequest": {
+        "additionalProperties": true,
+        "properties": {
+          "action_payload": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "action_type": {
+            "type": "string"
+          },
+          "agreement_id": {
+            "type": "string"
+          },
+          "approval_count": {
+            "type": "integer"
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "deadline_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "denial_count": {
+            "type": "integer"
+          },
+          "id": {
+            "type": "string"
+          },
+          "initiator_id": {
+            "type": "string"
+          },
+          "justification": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "required_approvals": {
+            "type": "integer"
+          },
+          "resolved_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "status",
+          "action_type"
+        ],
+        "type": "object"
+      },
+      "QuorumRequestDetail": {
+        "additionalProperties": true,
+        "properties": {
+          "quorum_request": {
+            "$ref": "#/components/schemas/QuorumRequest"
+          },
+          "votes": {
+            "items": {
+              "$ref": "#/components/schemas/QuorumVote"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "quorum_request",
+          "votes"
+        ],
+        "type": "object"
+      },
+      "QuorumRequestEnvelope": {
+        "additionalProperties": true,
+        "properties": {
+          "quorum_request": {
+            "$ref": "#/components/schemas/QuorumRequest"
+          }
+        },
+        "required": [
+          "quorum_request"
+        ],
+        "type": "object"
+      },
+      "QuorumRequestList": {
+        "additionalProperties": true,
+        "properties": {
+          "quorum_requests": {
+            "items": {
+              "$ref": "#/components/schemas/QuorumRequest"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "quorum_requests"
+        ],
+        "type": "object"
+      },
+      "QuorumVote": {
+        "additionalProperties": true,
+        "properties": {
+          "comment": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "delegate_id": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "vote": {
+            "type": "string"
+          },
+          "voted_at": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "vote"
+        ],
+        "type": "object"
+      },
+      "QuorumVoteCast": {
+        "additionalProperties": true,
+        "properties": {
+          "quorum_request": {
+            "$ref": "#/components/schemas/QuorumRequest"
+          },
+          "vote": {
+            "$ref": "#/components/schemas/QuorumVote"
+          }
+        },
+        "required": [
+          "vote",
+          "quorum_request"
         ],
         "type": "object"
       },
@@ -1260,6 +4026,171 @@
         ],
         "type": "object"
       },
+      "SecurityEventPoll": {
+        "additionalProperties": true,
+        "properties": {
+          "more_available": {
+            "type": "boolean"
+          },
+          "sets": {
+            "additionalProperties": true,
+            "type": "object"
+          }
+        },
+        "required": [
+          "sets",
+          "more_available"
+        ],
+        "type": "object"
+      },
+      "SecurityEventStream": {
+        "additionalProperties": true,
+        "properties": {
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "delivery_method": {
+            "type": "string"
+          },
+          "endpoint_url": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "events_delivered": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "events_requested": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "failure_count": {
+            "type": "integer"
+          },
+          "id": {
+            "type": "string"
+          },
+          "last_failure_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "paused_until": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "status",
+          "delivery_method"
+        ],
+        "type": "object"
+      },
+      "SecurityEventStreamDelivery": {
+        "additionalProperties": true,
+        "properties": {
+          "attempt_count": {
+            "type": "integer"
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "delivered_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "event_type": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "jti": {
+            "type": "string"
+          },
+          "last_error": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "event_type",
+          "status"
+        ],
+        "type": "object"
+      },
+      "SecurityEventStreamEnvelope": {
+        "additionalProperties": true,
+        "properties": {
+          "security_event_stream": {
+            "$ref": "#/components/schemas/SecurityEventStream"
+          }
+        },
+        "required": [
+          "security_event_stream"
+        ],
+        "type": "object"
+      },
+      "SecurityEventStreamList": {
+        "additionalProperties": true,
+        "properties": {
+          "security_event_streams": {
+            "items": {
+              "$ref": "#/components/schemas/SecurityEventStream"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "security_event_streams"
+        ],
+        "type": "object"
+      },
+      "SharePolicyRequest": {
+        "additionalProperties": true,
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "user_id": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
       "TransferRegister": {
         "additionalProperties": false,
         "description": "Cross-border transfers of personal data, each with the lawful basis it relied on and the adequacy verdict for the country pair.",
@@ -1304,6 +4235,205 @@
         ],
         "type": "object"
       },
+      "TrustAdvancement": {
+        "additionalProperties": true,
+        "properties": {
+          "advancement_needed": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "trust_progress": {
+            "$ref": "#/components/schemas/TrustProgress"
+          }
+        },
+        "required": [
+          "advancement_needed"
+        ],
+        "type": "object"
+      },
+      "TrustProgress": {
+        "additionalProperties": true,
+        "properties": {
+          "completed": {
+            "type": "boolean"
+          },
+          "current_position": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "current_stage_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "entered_stage_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "metadata": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "stages": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "started": {
+            "type": "boolean"
+          },
+          "trust_ladder_id": {
+            "type": "string"
+          },
+          "trust_ladder_name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "trust_ladder_id"
+        ],
+        "type": "object"
+      },
+      "TrustProgressEnvelope": {
+        "additionalProperties": true,
+        "properties": {
+          "trust_progress": {
+            "$ref": "#/components/schemas/TrustProgress"
+          }
+        },
+        "required": [
+          "trust_progress"
+        ],
+        "type": "object"
+      },
+      "TrustQueryEnvelope": {
+        "additionalProperties": true,
+        "properties": {
+          "trust_query": {
+            "additionalProperties": true,
+            "type": "object"
+          }
+        },
+        "required": [
+          "trust_query"
+        ],
+        "type": "object"
+      },
+      "TrustScore": {
+        "additionalProperties": true,
+        "properties": {
+          "computed_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "delta": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "dimension_scores": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "id": {
+            "type": "string"
+          },
+          "previous_score": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "score": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "status": {
+            "type": "string"
+          },
+          "version": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "status"
+        ],
+        "type": "object"
+      },
+      "TrustScoreEnvelope": {
+        "additionalProperties": true,
+        "properties": {
+          "trust_score": {
+            "$ref": "#/components/schemas/TrustScore"
+          }
+        },
+        "required": [
+          "trust_score"
+        ],
+        "type": "object"
+      },
+      "UpdateDelegationRequest": {
+        "additionalProperties": true,
+        "properties": {
+          "delegation_grant": {
+            "additionalProperties": true,
+            "properties": {
+              "allow_sub_delegation": {
+                "type": "boolean"
+              },
+              "delegated_scopes": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "expires_at": {
+                "format": "date-time",
+                "type": "string"
+              },
+              "max_actions_per_day": {
+                "type": "integer"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "required": [
+          "delegation_grant"
+        ],
+        "type": "object"
+      },
       "UpdateFlowRequest": {
         "properties": {
           "flow": {
@@ -1322,6 +4452,140 @@
             "type": "object"
           }
         },
+        "type": "object"
+      },
+      "UpdateSecurityEventStreamRequest": {
+        "additionalProperties": true,
+        "properties": {
+          "endpoint_url": {
+            "type": "string"
+          },
+          "events_requested": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "UpdateWebhookSubscriptionRequest": {
+        "additionalProperties": true,
+        "properties": {
+          "webhook_subscription": {
+            "additionalProperties": true,
+            "properties": {
+              "enabled": {
+                "type": "boolean"
+              },
+              "events": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "url": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "required": [
+          "webhook_subscription"
+        ],
+        "type": "object"
+      },
+      "VerificationSession": {
+        "additionalProperties": true,
+        "properties": {
+          "assurance_level_achieved": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "completed_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "consent_transaction_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "expires_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "provider_name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "redirect_url": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "started_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "type": "string"
+          },
+          "user_sub": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "verification_requirement_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "status"
+        ],
+        "type": "object"
+      },
+      "VerificationSessionEnvelope": {
+        "additionalProperties": true,
+        "properties": {
+          "verification_session": {
+            "$ref": "#/components/schemas/VerificationSession"
+          }
+        },
+        "required": [
+          "verification_session"
+        ],
         "type": "object"
       },
       "Version": {
@@ -1345,6 +4609,173 @@
         "required": [
           "version",
           "release"
+        ],
+        "type": "object"
+      },
+      "Vouch": {
+        "additionalProperties": true,
+        "properties": {
+          "claim_type": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "confidence": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "expires_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "recipient_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "type": "string"
+          },
+          "voucher_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "status"
+        ],
+        "type": "object"
+      },
+      "VouchDetail": {
+        "additionalProperties": true,
+        "properties": {
+          "claim_data": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "claim_template_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "claim_type": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "confidence": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "expires_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "policy_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "recipient_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "revocation_reason": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "voucher_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "status"
+        ],
+        "type": "object"
+      },
+      "VouchDetailEnvelope": {
+        "additionalProperties": true,
+        "properties": {
+          "vouch": {
+            "$ref": "#/components/schemas/VouchDetail"
+          }
+        },
+        "required": [
+          "vouch"
+        ],
+        "type": "object"
+      },
+      "VouchEnvelope": {
+        "additionalProperties": true,
+        "properties": {
+          "vouch": {
+            "$ref": "#/components/schemas/Vouch"
+          }
+        },
+        "required": [
+          "vouch"
+        ],
+        "type": "object"
+      },
+      "VouchList": {
+        "additionalProperties": true,
+        "properties": {
+          "vouches": {
+            "items": {
+              "$ref": "#/components/schemas/Vouch"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "vouches"
         ],
         "type": "object"
       },
@@ -1387,6 +4818,120 @@
             "type": "array"
           }
         },
+        "type": "object"
+      },
+      "WalletPassEnvelope": {
+        "additionalProperties": true,
+        "properties": {
+          "wallet_pass": {
+            "additionalProperties": true,
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "pass_data": {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              "pass_type_identifier": {
+                "type": "string"
+              },
+              "serial_number": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "status"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "wallet_pass"
+        ],
+        "type": "object"
+      },
+      "WebhookSubscription": {
+        "additionalProperties": true,
+        "properties": {
+          "application_id": {
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "disabled_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "events": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "failure_count": {
+            "type": "integer"
+          },
+          "id": {
+            "type": "string"
+          },
+          "secret": {
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "application_id",
+          "url",
+          "events",
+          "enabled"
+        ],
+        "type": "object"
+      },
+      "WebhookSubscriptionEnvelope": {
+        "additionalProperties": true,
+        "properties": {
+          "webhook_subscription": {
+            "$ref": "#/components/schemas/WebhookSubscription"
+          }
+        },
+        "required": [
+          "webhook_subscription"
+        ],
+        "type": "object"
+      },
+      "WebhookSubscriptionList": {
+        "additionalProperties": true,
+        "properties": {
+          "webhook_subscriptions": {
+            "items": {
+              "$ref": "#/components/schemas/WebhookSubscription"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "webhook_subscriptions"
+        ],
         "type": "object"
       }
     },
@@ -1432,7 +4977,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/AccountList"
                 }
               }
             },
@@ -4451,6 +7996,16 @@
           }
         ],
         "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentIdentityMessage"
+                }
+              }
+            },
+            "description": "OK"
+          },
           "204": {
             "content": {
               "application/json": {
@@ -4832,16 +8387,26 @@
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DelegateAgentIdentityRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
-          "200": {
+          "201": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/AgentIdentity"
                 }
               }
             },
-            "description": "OK"
+            "description": "Created"
           },
           "400": {
             "content": {
@@ -6269,16 +9834,26 @@
     "/api/v1/agreements/propose": {
       "post": {
         "operationId": "Agreements_propose",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProposeAgreementRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
-          "200": {
+          "201": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/Agreement"
                 }
               }
             },
-            "description": "OK"
+            "description": "Created"
           },
           "400": {
             "content": {
@@ -7057,7 +10632,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/AuditAnchorEnvelope"
                 }
               }
             },
@@ -7251,7 +10826,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/AnchorReceipts"
                 }
               }
             },
@@ -13192,7 +16767,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/FlowPreviewResolution"
                 }
               }
             },
@@ -16889,12 +20464,22 @@
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConfirmPortabilityTransferRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/PortabilityTransferEnvelope"
                 }
               }
             },
@@ -16986,12 +20571,22 @@
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConfirmPortabilityTransferRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/PortabilityTransferEnvelope"
                 }
               }
             },
@@ -17088,7 +20683,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/PortabilityFormats"
                 }
               }
             },
@@ -22939,7 +26534,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/WebhookSubscriptionList"
                 }
               }
             },
@@ -23029,16 +26624,26 @@
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateWebhookSubscriptionRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
-          "200": {
+          "201": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/WebhookSubscriptionEnvelope"
                 }
               }
             },
-            "description": "OK"
+            "description": "Created"
           },
           "400": {
             "content": {
@@ -23136,7 +26741,7 @@
           }
         ],
         "responses": {
-          "200": {
+          "204": {
             "content": {
               "application/json": {
                 "schema": {
@@ -23144,7 +26749,7 @@
                 }
               }
             },
-            "description": "OK"
+            "description": "No Content"
           },
           "400": {
             "content": {
@@ -23244,7 +26849,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/WebhookSubscriptionEnvelope"
                 }
               }
             },
@@ -23343,12 +26948,22 @@
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateWebhookSubscriptionRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/WebhookSubscriptionEnvelope"
                 }
               }
             },
@@ -23447,12 +27062,22 @@
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateWebhookSubscriptionRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/WebhookSubscriptionEnvelope"
                 }
               }
             },
@@ -23752,7 +27377,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/ApplicationEnvelope"
                 }
               }
             },
@@ -23849,7 +27474,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/ApplicationEnvelope"
                 }
               }
             },
@@ -25357,7 +28982,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CleanRoomEnvironment"
+                  "$ref": "#/components/schemas/CleanRoomEnvelope"
                 }
               }
             },
@@ -25551,7 +29176,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/CleanRoomQueryList"
                 }
               }
             },
@@ -25641,16 +29266,26 @@
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCleanRoomQueryRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
-          "200": {
+          "201": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/CleanRoomQueryEnvelope"
                 }
               }
             },
-            "description": "OK"
+            "description": "Created"
           },
           "400": {
             "content": {
@@ -25752,7 +29387,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/CleanRoomQueryDetailEnvelope"
                 }
               }
             },
@@ -25845,15 +29480,15 @@
           }
         ],
         "responses": {
-          "204": {
+          "200": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/CleanRoomEnvelope"
                 }
               }
             },
-            "description": "No Content"
+            "description": "OK"
           },
           "400": {
             "content": {
@@ -25944,7 +29579,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CleanRoomEnvironment"
+                  "$ref": "#/components/schemas/CleanRoomEnvelope"
                 }
               }
             },
@@ -26041,7 +29676,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CleanRoomEnvironment"
+                  "$ref": "#/components/schemas/CleanRoomEnvelope"
                 }
               }
             },
@@ -26127,7 +29762,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/CollaborationList"
                 }
               }
             },
@@ -26206,16 +29841,26 @@
       },
       "post": {
         "operationId": "Collaborations_create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCollaborationRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
-          "200": {
+          "201": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/CollaborationEnvelope"
                 }
               }
             },
-            "description": "OK"
+            "description": "Created"
           },
           "400": {
             "content": {
@@ -26308,7 +29953,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/CollaborationDetailEnvelope"
                 }
               }
             },
@@ -26400,16 +30045,26 @@
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InviteCollaboratorRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
-          "200": {
+          "201": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/CollaborationMembershipEnvelope"
                 }
               }
             },
-            "description": "OK"
+            "description": "Created"
           },
           "400": {
             "content": {
@@ -26599,7 +30254,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/CollaborationMembershipEnvelope"
                 }
               }
             },
@@ -27234,7 +30889,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/ConnectionList"
                 }
               }
             },
@@ -27543,7 +31198,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/ConnectionDisconnected"
                 }
               }
             },
@@ -27638,7 +31293,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/ConnectionDetailEnvelope"
                 }
               }
             },
@@ -27735,7 +31390,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/ConnectionDetailEnvelope"
                 }
               }
             },
@@ -27832,7 +31487,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/ConnectionDetailEnvelope"
                 }
               }
             },
@@ -29172,7 +32827,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/ConsentAuthorized"
                 }
               }
             },
@@ -29576,7 +33231,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/ConsentExchange"
                 }
               }
             },
@@ -29675,7 +33330,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/ConsentVerification"
                 }
               }
             },
@@ -29936,7 +33591,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/CredentialList"
                 }
               }
             },
@@ -30015,16 +33670,26 @@
       },
       "post": {
         "operationId": "Credentials_create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCredentialRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
-          "200": {
+          "201": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/CredentialIssued"
                 }
               }
             },
-            "description": "OK"
+            "description": "Created"
           },
           "400": {
             "content": {
@@ -30117,7 +33782,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/CredentialRevoked"
                 }
               }
             },
@@ -30212,7 +33877,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/CredentialEnvelope"
                 }
               }
             },
@@ -30309,7 +33974,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/WalletPassEnvelope"
                 }
               }
             },
@@ -30491,7 +34156,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/DataLicenseList"
                 }
               }
             },
@@ -30570,16 +34235,26 @@
       },
       "post": {
         "operationId": "DataLicenses_create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateDataLicenseRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
-          "200": {
+          "201": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/DataLicenseEnvelope"
                 }
               }
             },
-            "description": "OK"
+            "description": "Created"
           },
           "400": {
             "content": {
@@ -30672,7 +34347,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/DataLicenseDetailEnvelope"
                 }
               }
             },
@@ -30769,7 +34444,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/DataLicenseEnvelope"
                 }
               }
             },
@@ -31219,7 +34894,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/DsarRequestList"
                 }
               }
             },
@@ -31298,16 +34973,26 @@
       },
       "post": {
         "operationId": "DataRequests_create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateDsarRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
-          "200": {
+          "201": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/DsarRequestEnvelope"
                 }
               }
             },
-            "description": "OK"
+            "description": "Created"
           },
           "400": {
             "content": {
@@ -31400,7 +35085,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/DsarRequestEnvelope"
                 }
               }
             },
@@ -32154,7 +35839,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/DecisionWait"
                 }
               }
             },
@@ -32650,7 +36335,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/DecisionCancelled"
                 }
               }
             },
@@ -33153,7 +36838,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/DecisionExchange"
                 }
               }
             },
@@ -33524,7 +37209,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/DelegationList"
                 }
               }
             },
@@ -33603,16 +37288,26 @@
       },
       "post": {
         "operationId": "Delegations_create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateDelegationRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
-          "200": {
+          "201": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/DelegationEnvelope"
                 }
               }
             },
-            "description": "OK"
+            "description": "Created"
           },
           "400": {
             "content": {
@@ -33705,7 +37400,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/DelegationDetailEnvelope"
                 }
               }
             },
@@ -33795,12 +37490,22 @@
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateDelegationRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/DelegationEnvelope"
                 }
               }
             },
@@ -33890,12 +37595,22 @@
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateDelegationRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/DelegationEnvelope"
                 }
               }
             },
@@ -33992,7 +37707,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/DelegationEnvelope"
                 }
               }
             },
@@ -36134,7 +39849,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/EntitlementList"
                 }
               }
             },
@@ -36231,7 +39946,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/EntitlementEnvelope"
                 }
               }
             },
@@ -36328,7 +40043,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/EntitlementVerification"
                 }
               }
             },
@@ -36425,7 +40140,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/EvidencePackageEnvelope"
                 }
               }
             },
@@ -40127,15 +43842,15 @@
       "delete": {
         "operationId": "Me_destroy",
         "responses": {
-          "200": {
+          "202": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/DeletionQueued"
                 }
               }
             },
-            "description": "OK"
+            "description": "Accepted"
           },
           "400": {
             "content": {
@@ -40215,7 +43930,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/CurrentUser"
                 }
               }
             },
@@ -44254,16 +47969,26 @@
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SharePolicyRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
-          "200": {
+          "201": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/PolicyParticipantEnvelope"
                 }
               }
             },
-            "description": "OK"
+            "description": "Created"
           },
           "400": {
             "content": {
@@ -44438,15 +48163,15 @@
       "post": {
         "operationId": "Presentations_create",
         "responses": {
-          "200": {
+          "201": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/CredentialPresentationEnvelope"
                 }
               }
             },
-            "description": "OK"
+            "description": "Created"
           },
           "400": {
             "content": {
@@ -44539,7 +48264,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/CredentialPresentationEnvelope"
                 }
               }
             },
@@ -44636,7 +48361,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/CredentialPresentationEnvelope"
                 }
               }
             },
@@ -44717,16 +48442,26 @@
     "/api/v1/preview_tokens": {
       "post": {
         "operationId": "PreviewTokens_create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePreviewTokenRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
-          "200": {
+          "201": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/PreviewToken"
                 }
               }
             },
-            "description": "OK"
+            "description": "Created"
           },
           "400": {
             "content": {
@@ -44811,7 +48546,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/QuorumRequestList"
                 }
               }
             },
@@ -44890,16 +48625,26 @@
       },
       "post": {
         "operationId": "QuorumRequests_create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateQuorumRequestRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
-          "200": {
+          "201": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/QuorumRequestEnvelope"
                 }
               }
             },
-            "description": "OK"
+            "description": "Created"
           },
           "400": {
             "content": {
@@ -44992,7 +48737,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/QuorumRequestDetail"
                 }
               }
             },
@@ -45084,16 +48829,26 @@
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CastQuorumVoteRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
-          "200": {
+          "201": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/QuorumVoteCast"
                 }
               }
             },
-            "description": "OK"
+            "description": "Created"
           },
           "400": {
             "content": {
@@ -46249,7 +50004,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/SecurityEventStreamList"
                 }
               }
             },
@@ -46328,16 +50083,26 @@
       },
       "post": {
         "operationId": "SecurityEventStreams_create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSecurityEventStreamRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
-          "200": {
+          "201": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/SecurityEventStreamEnvelope"
                 }
               }
             },
-            "description": "OK"
+            "description": "Created"
           },
           "400": {
             "content": {
@@ -46430,7 +50195,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/Message"
                 }
               }
             },
@@ -46525,7 +50290,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/SecurityEventStreamEnvelope"
                 }
               }
             },
@@ -46615,12 +50380,22 @@
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSecurityEventStreamRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/SecurityEventStreamEnvelope"
                 }
               }
             },
@@ -46710,12 +50485,22 @@
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSecurityEventStreamRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/SecurityEventStreamEnvelope"
                 }
               }
             },
@@ -46812,7 +50597,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/SecurityEventPoll"
                 }
               }
             },
@@ -47004,7 +50789,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/Message"
                 }
               }
             },
@@ -47727,7 +51512,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/PortabilityTransferList"
                 }
               }
             },
@@ -47806,16 +51591,26 @@
       },
       "post": {
         "operationId": "Transfers_create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePortabilityTransferRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
-          "200": {
+          "201": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/PortabilityTransferRecordEnvelope"
                 }
               }
             },
-            "description": "OK"
+            "description": "Created"
           },
           "400": {
             "content": {
@@ -47908,7 +51703,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/PortabilityTransferDetailEnvelope"
                 }
               }
             },
@@ -48005,7 +51800,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/PortabilityTransferRecordEnvelope"
                 }
               }
             },
@@ -48285,7 +52080,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/TrustProgressEnvelope"
                 }
               }
             },
@@ -48382,7 +52177,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/TrustProgressEnvelope"
                 }
               }
             },
@@ -48479,11 +52274,21 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/TrustAdvancement"
                 }
               }
             },
             "description": "OK"
+          },
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrustAdvancement"
+                }
+              }
+            },
+            "description": "Created"
           },
           "400": {
             "content": {
@@ -48565,7 +52370,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/TrustScoreEnvelope"
                 }
               }
             },
@@ -48651,7 +52456,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/TrustQueryEnvelope"
                 }
               }
             },
@@ -49085,16 +52890,26 @@
     "/api/v1/verification_sessions": {
       "post": {
         "operationId": "VerificationSessions_create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateVerificationSessionRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
-          "200": {
+          "201": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/VerificationSessionEnvelope"
                 }
               }
             },
-            "description": "OK"
+            "description": "Created"
           },
           "400": {
             "content": {
@@ -49187,7 +53002,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/VerificationSessionEnvelope"
                 }
               }
             },
@@ -49542,7 +53357,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/VouchList"
                 }
               }
             },
@@ -49621,16 +53436,26 @@
       },
       "post": {
         "operationId": "Vouches_create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateVouchRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
-          "200": {
+          "201": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/VouchEnvelope"
                 }
               }
             },
-            "description": "OK"
+            "description": "Created"
           },
           "400": {
             "content": {
@@ -49712,7 +53537,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/VouchList"
                 }
               }
             },
@@ -49809,7 +53634,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/VouchEnvelope"
                 }
               }
             },
@@ -49904,7 +53729,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/VouchDetailEnvelope"
                 }
               }
             },

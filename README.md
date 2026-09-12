@@ -1,5 +1,5 @@
 > **Release mirror.** This repository is a read-only snapshot of
-> `openapi` 2026.09.11.1, published from Overturo's main
+> `openapi` 2026.09.12, published from Overturo's main
 > development repository. Issues and pull requests are welcome here; accepted
 > changes are ported upstream and appear in the next release snapshot.
 > Security reports: see [SECURITY.md](./SECURITY.md).
@@ -33,10 +33,10 @@ first, and the next snapshot describes it.
 |---|---|
 | Paths | 363 |
 | Operations | 509 |
-| Operations with a typed success schema | 62 |
-| Operations still on the placeholder success schema (`Empty`) | 447 |
-| Operations with a request-body schema | 12 |
-| Component schemas | 49 |
+| Operations with a typed success schema | 156 |
+| Operations still on the placeholder success schema (`Empty`) | 353 |
+| Operations with a request-body schema | 38 |
+| Component schemas | 173 |
 
 Operations on the placeholder schema return a JSON object whose shape is not
 yet described; typed schemas are being completed and each snapshot updates the
