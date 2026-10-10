@@ -1450,6 +1450,10 @@
           "flow_id": {
             "type": "string"
           },
+          "meeting_id": {
+            "description": "For a consent flow with scheduled meetings: the meeting this decision is for",
+            "type": "string"
+          },
           "metadata": {
             "additionalProperties": true,
             "type": "object"
@@ -1525,6 +1529,10 @@
               "consent",
               "approval"
             ],
+            "type": "string"
+          },
+          "meeting_id": {
+            "description": "For a consent flow with scheduled meetings: the meeting this decision is for (one of the flow's meeting ids)",
             "type": "string"
           },
           "redirect_uri": {
@@ -1669,6 +1677,42 @@
         "required": [
           "flow"
         ],
+        "type": "object"
+      },
+      "CreateMeetingConsentRequest": {
+        "properties": {
+          "agent_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "description": {
+            "type": "string"
+          },
+          "duration_minutes": {
+            "description": "Defaults to 60; sets ends_at",
+            "minimum": 1,
+            "type": "integer"
+          },
+          "external_meeting_id": {
+            "type": "string"
+          },
+          "platform": {
+            "type": "string"
+          },
+          "scheduled_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "template": {
+            "description": "A meetings template key; defaults to the organisation's default template",
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          }
+        },
         "type": "object"
       },
       "CreatePolicyRequest": {
@@ -3360,6 +3404,381 @@
         },
         "type": "object"
       },
+      "MeetingConsent": {
+        "properties": {
+          "application_id": {
+            "type": "string"
+          },
+          "cancelled_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "consent_link": {
+            "format": "uri",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "consented_count": {
+            "type": "integer"
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "ends_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "external_meeting_id": {
+            "description": "The platform's own meeting id",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "id": {
+            "example": "vnsess_dev_abc123",
+            "type": "string"
+          },
+          "name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "participants": {
+            "$ref": "#/components/schemas/MeetingParticipantCounts"
+          },
+          "platform": {
+            "description": "zoom, teams, google_meet, custom",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "scheduled_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "description": "checked_in = scheduled or live; expired with cancelled_at = cancelled",
+            "enum": [
+              "checked_in",
+              "checked_out",
+              "expired"
+            ],
+            "type": "string"
+          },
+          "template": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "updated_at": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "application_id",
+          "status"
+        ],
+        "type": "object"
+      },
+      "MeetingConsentEnvelope": {
+        "properties": {
+          "consent_link": {
+            "format": "uri",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "consented_count": {
+            "type": "integer"
+          },
+          "meeting_consent": {
+            "$ref": "#/components/schemas/MeetingConsent"
+          }
+        },
+        "required": [
+          "meeting_consent"
+        ],
+        "type": "object"
+      },
+      "MeetingConsentList": {
+        "properties": {
+          "meeting_consents": {
+            "items": {
+              "$ref": "#/components/schemas/MeetingConsent"
+            },
+            "type": "array"
+          },
+          "pagination": {
+            "properties": {
+              "page": {
+                "type": "integer"
+              },
+              "pages": {
+                "type": "integer"
+              },
+              "per_page": {
+                "type": "integer"
+              },
+              "total": {
+                "type": "integer"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "required": [
+          "meeting_consents"
+        ],
+        "type": "object"
+      },
+      "MeetingParticipant": {
+        "properties": {
+          "decided_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "decisions": {
+            "additionalProperties": {
+              "enum": [
+                "granted",
+                "declined",
+                "withdrawn"
+              ],
+              "type": "string"
+            },
+            "description": "Purpose name → the participant's decision",
+            "type": "object"
+          },
+          "email": {
+            "description": "The address the organisation invited — never another participant's",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "source": {
+            "enum": [
+              "booking",
+              "invitation",
+              "chat",
+              "embed",
+              "broadcast",
+              "roster",
+              "mandate"
+            ],
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "requested",
+              "notified",
+              "reminded",
+              "present",
+              "covered_by_mandate",
+              "covered_by_prior_consent",
+              "carried_forward",
+              "consented",
+              "declined",
+              "withdrawn",
+              "expired",
+              "voided"
+            ],
+            "type": "string"
+          },
+          "withdrawn_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "status",
+          "source",
+          "decisions"
+        ],
+        "type": "object"
+      },
+      "MeetingParticipantCounts": {
+        "properties": {
+          "consented": {
+            "description": "Decided with grants in force (consented or covered)",
+            "type": "integer"
+          },
+          "decided": {
+            "description": "Consented, declined, withdrawn, or covered by an earlier decision or standing preference",
+            "type": "integer"
+          },
+          "total": {
+            "description": "People asked (every participant row except voided ones)",
+            "type": "integer"
+          },
+          "undecided": {
+            "description": "Requested, notified, reminded or present but not yet decided (lapsed requests are neither)",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "total",
+          "decided",
+          "undecided"
+        ],
+        "type": "object"
+      },
+      "MeetingParticipantList": {
+        "properties": {
+          "counts": {
+            "$ref": "#/components/schemas/MeetingParticipantCounts"
+          },
+          "participants": {
+            "items": {
+              "$ref": "#/components/schemas/MeetingParticipant"
+            },
+            "type": "array"
+          },
+          "total": {
+            "description": "Consented participants",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "participants",
+          "total"
+        ],
+        "type": "object"
+      },
+      "MeetingParticipantStatus": {
+        "properties": {
+          "consented_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "decisions": {
+            "additionalProperties": {
+              "enum": [
+                "granted",
+                "declined",
+                "withdrawn"
+              ],
+              "type": "string"
+            },
+            "description": "Purpose name → granted, declined or withdrawn",
+            "type": "object"
+          },
+          "meeting": {
+            "properties": {
+              "cancelled_at": {
+                "format": "date-time",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "ends_at": {
+                "format": "date-time",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "id": {
+                "type": "string"
+              },
+              "platform": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "scheduled_at": {
+                "format": "date-time",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "title": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "meeting_consent_id": {
+            "type": "string"
+          },
+          "purposes": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Purpose name → the participant's decision as recorded (kept for compatibility; prefer decisions)",
+            "type": "object"
+          },
+          "revoked_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "description": "pending, fulfilled, expired or revoked",
+            "type": "string"
+          }
+        },
+        "required": [
+          "meeting_consent_id",
+          "status"
+        ],
+        "type": "object"
+      },
       "Message": {
         "additionalProperties": true,
         "properties": {
@@ -4450,6 +4869,29 @@
               }
             },
             "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "UpdateMeetingConsentRequest": {
+        "properties": {
+          "duration_minutes": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "external_meeting_id": {
+            "type": "string"
+          },
+          "platform": {
+            "type": "string"
+          },
+          "scheduled_at": {
+            "description": "A new start reschedules the meeting (participants' calendar entries bump their sequence)",
+            "format": "date-time",
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
           }
         },
         "type": "object"
@@ -18104,6 +18546,28 @@
               "description": "Opaque resource identifier (prefix-id format)",
               "type": "string"
             }
+          },
+          {
+            "description": "Page size (capped at 100)",
+            "in": "query",
+            "name": "per_page",
+            "required": false,
+            "schema": {
+              "default": 25,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Page number",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "minimum": 1,
+              "type": "integer"
+            }
           }
         ],
         "responses": {
@@ -18111,7 +18575,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/MeetingConsentList"
                 }
               }
             },
@@ -18186,6 +18650,20 @@
         "summary": "Index MeetingConsents",
         "tags": [
           "Connect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (PyPI)",
+            "repository": "https://github.com/overturo/sdk-python"
+          },
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          },
+          {
+            "package": "@overturo/sdk (npm)",
+            "repository": "https://github.com/overturo/sdk"
+          }
         ]
       },
       "post": {
@@ -18201,16 +18679,26 @@
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateMeetingConsentRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
-          "200": {
+          "201": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/MeetingConsentEnvelope"
                 }
               }
             },
-            "description": "OK"
+            "description": "Created"
           },
           "400": {
             "content": {
@@ -18281,6 +18769,20 @@
         "summary": "Create MeetingConsents",
         "tags": [
           "Connect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (PyPI)",
+            "repository": "https://github.com/overturo/sdk-python"
+          },
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          },
+          {
+            "package": "@overturo/sdk (npm)",
+            "repository": "https://github.com/overturo/sdk"
+          }
         ]
       }
     },
@@ -18308,7 +18810,7 @@
           }
         ],
         "responses": {
-          "200": {
+          "204": {
             "content": {
               "application/json": {
                 "schema": {
@@ -18316,7 +18818,7 @@
                 }
               }
             },
-            "description": "OK"
+            "description": "No Content"
           },
           "400": {
             "content": {
@@ -18384,9 +18886,23 @@
             "api_token": []
           }
         ],
-        "summary": "Destroy MeetingConsents",
+        "summary": "Cancel a meeting",
         "tags": [
           "Connect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (PyPI)",
+            "repository": "https://github.com/overturo/sdk-python"
+          },
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          },
+          {
+            "package": "@overturo/sdk (npm)",
+            "repository": "https://github.com/overturo/sdk"
+          }
         ]
       },
       "get": {
@@ -18416,7 +18932,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/MeetingConsentEnvelope"
                 }
               }
             },
@@ -18491,12 +19007,24 @@
         "summary": "Show MeetingConsents",
         "tags": [
           "Connect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (PyPI)",
+            "repository": "https://github.com/overturo/sdk-python"
+          },
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          },
+          {
+            "package": "@overturo/sdk (npm)",
+            "repository": "https://github.com/overturo/sdk"
+          }
         ]
-      }
-    },
-    "/api/v1/applications/{application_id}/meeting_consents/{id}/participants": {
-      "get": {
-        "operationId": "Applications_MeetingConsents_participants",
+      },
+      "patch": {
+        "operationId": "Applications_MeetingConsents_update",
         "parameters": [
           {
             "in": "path",
@@ -18517,12 +19045,22 @@
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateMeetingConsentRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/MeetingConsentEnvelope"
                 }
               }
             },
@@ -18594,9 +19132,257 @@
             "api_token": []
           }
         ],
-        "summary": "Participants MeetingConsents",
+        "summary": "Rename or reschedule a meeting",
         "tags": [
           "Connect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (PyPI)",
+            "repository": "https://github.com/overturo/sdk-python"
+          },
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          },
+          {
+            "package": "@overturo/sdk (npm)",
+            "repository": "https://github.com/overturo/sdk"
+          }
+        ]
+      },
+      "put": {
+        "operationId": "Applications_MeetingConsents_update_put",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "application_id",
+            "required": true,
+            "schema": {
+              "description": "Opaque resource identifier (prefix-id format)",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "description": "Opaque resource identifier (prefix-id format)",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateMeetingConsentRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MeetingConsentEnvelope"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Unprocessable Content"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "api_token": []
+          }
+        ],
+        "summary": "Rename or reschedule a meeting",
+        "tags": [
+          "Connect"
+        ]
+      }
+    },
+    "/api/v1/applications/{application_id}/meeting_consents/{id}/participants": {
+      "get": {
+        "operationId": "Applications_MeetingConsents_participants",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "application_id",
+            "required": true,
+            "schema": {
+              "description": "Opaque resource identifier (prefix-id format)",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "description": "Opaque resource identifier (prefix-id format)",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MeetingParticipantList"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Unprocessable Content"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "api_token": []
+          }
+        ],
+        "summary": "List a meeting's participants and their decisions",
+        "tags": [
+          "Connect"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "overturo (PyPI)",
+            "repository": "https://github.com/overturo/sdk-python"
+          },
+          {
+            "package": "overturo (RubyGems)",
+            "repository": "https://github.com/overturo/sdk-ruby"
+          },
+          {
+            "package": "@overturo/sdk (npm)",
+            "repository": "https://github.com/overturo/sdk"
+          }
         ]
       }
     },
@@ -45097,7 +45883,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/MeetingParticipantStatus"
                 }
               }
             },
@@ -45172,9 +45958,15 @@
             "api_token": []
           }
         ],
-        "summary": "Revoke MeetingConsents",
+        "summary": "Withdraw this participant's consent for a meeting",
         "tags": [
           "Other"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "@overturo/js (npm)",
+            "repository": "https://github.com/overturo/js"
+          }
         ]
       }
     },
@@ -45190,6 +45982,15 @@
               "description": "Opaque resource identifier (prefix-id format)",
               "type": "string"
             }
+          },
+          {
+            "description": "The participant's session token (publishable-key or application-key callers)",
+            "in": "query",
+            "name": "session_token",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -45197,7 +45998,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Empty"
+                  "$ref": "#/components/schemas/MeetingParticipantStatus"
                 }
               }
             },
@@ -45272,9 +46073,15 @@
             "api_token": []
           }
         ],
-        "summary": "Status MeetingConsents",
+        "summary": "This participant's consent status for a meeting",
         "tags": [
           "Other"
+        ],
+        "x-overturo-sdks": [
+          {
+            "package": "@overturo/js (npm)",
+            "repository": "https://github.com/overturo/js"
+          }
         ]
       }
     },
