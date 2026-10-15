@@ -1,5 +1,5 @@
 > **Release mirror.** This repository is a read-only snapshot of
-> `openapi` 2026.10.10, published from Overturo's main
+> `openapi` 2026.10.15, published from Overturo's main
 > development repository. Issues and pull requests are welcome here; accepted
 > changes are ported upstream and appear in the next release snapshot.
 > Security reports: see [SECURITY.md](./SECURITY.md).
@@ -31,15 +31,15 @@ first, and the next snapshot describes it.
 
 | Figure | Value |
 |---|---|
-| Paths | 363 |
-| Operations | 511 |
-| Operations with a typed success schema | 164 |
-| Operations with a client method in at least one SDK (`x-overturo-sdks`) | 146 |
+| Paths | 369 |
+| Operations | 517 |
+| Operations with a typed success schema | 172 |
+| Operations with a client method in at least one SDK (`x-overturo-sdks`) | 153 |
 
 An operation's `x-overturo-sdks` lists, per SDK that reaches it, the package a reader installs (`package`) and its public repository (`repository`).
-| Operations still on the placeholder success schema (`Empty`) | 347 |
-| Operations with a request-body schema | 41 |
-| Component schemas | 182 |
+| Operations still on the placeholder success schema (`Empty`) | 345 |
+| Operations with a request-body schema | 46 |
+| Component schemas | 192 |
 
 Operations on the placeholder schema return a JSON object whose shape is not
 yet described; typed schemas are being completed and each snapshot updates the

@@ -822,6 +822,109 @@ components:
       - status
       - consent_token
       type: object
+    ConsentCapture:
+      additionalProperties: false
+      properties:
+        capture:
+          additionalProperties: false
+          properties:
+            attestation_id:
+              type: string
+            committed:
+              description: True only for a browser commit.
+              type: boolean
+            record_id:
+              description: The consent record id once committed.
+              type:
+              - string
+              - 'null'
+            session_token:
+              description: 'The capture token: hand it to your server with the form
+                submission, then commit it.'
+              type: string
+            wording_verdict:
+              enum:
+              - match
+              - wording_drift
+              -
+              type:
+              - string
+              - 'null'
+          required:
+          - session_token
+          - attestation_id
+          - committed
+          type: object
+      required:
+      - capture
+      type: object
+    ConsentCaptureRequest:
+      additionalProperties: false
+      properties:
+        commit:
+          description: Browser commit — refused (422 browser_commit_not_allowed) unless
+            the application enabled it, lists allowed origins and the request comes
+            from one of them.
+          type: boolean
+        decisions:
+          additionalProperties:
+            properties:
+              decision:
+                enum:
+                - granted
+                - declined
+                type: string
+              default_checked:
+                description: Whether the control was shown ticked by default.
+                type: boolean
+              mandatory:
+                description: Whether the control was required to submit the form.
+                type: boolean
+            required:
+            - decision
+            type: object
+          description: 'Per purpose key: the decision and the presentation it was
+            made under. A consent purpose attested as pre-ticked or mandatory is refused.'
+          type: object
+        flow_id:
+          description: The flow whose purposes the form answers — the same id you
+            pass when you create a decision.
+          type: string
+        form_id:
+          type: string
+        locale:
+          type: string
+        notice_hash:
+          description: A digest of the notice text the form displayed (the algorithm
+            is in the forms documentation); compared with the published wording and
+            recorded as match or drift, never refused.
+          type: string
+        notice_hashes:
+          additionalProperties:
+            type: string
+          description: 'Per purpose key: the digest of that purpose''s label text
+            as displayed; compared purpose by purpose with the published wording.'
+          type: object
+        page_url:
+          type: string
+        snapshot:
+          description: 'The sanitised form snapshot: consent controls and their labels
+            only, at most 16 KB.'
+          type: string
+        subject:
+          description: 'The person the organisation knows: an email address and, optionally,
+            its own identifier.'
+          properties:
+            email:
+              format: email
+              type: string
+            external_id:
+              type: string
+          type: object
+      required:
+      - flow_id
+      - decisions
+      type: object
     ConsentExchange:
       additionalProperties: true
       properties:
@@ -858,6 +961,266 @@ components:
       required:
       - claims
       type: object
+    ConsentRecord:
+      additionalProperties: false
+      properties:
+        consent_record:
+          additionalProperties: false
+          properties:
+            captured_at:
+              format: date-time
+              type:
+              - string
+              - 'null'
+            channel:
+              type: string
+            expires_at:
+              format: date-time
+              type:
+              - string
+              - 'null'
+            flow_id:
+              type: string
+            id:
+              type: string
+            purposes:
+              items:
+                "$ref": "#/components/schemas/ConsentRecordPurposeOutcome"
+              type: array
+            receipt_id:
+              description: Fetch the receipt at /consent_receipts/{receipt_id}.
+              type: string
+            recorded_at:
+              format: date-time
+              type:
+              - string
+              - 'null'
+            status:
+              enum:
+              - fulfilled
+              - revoked
+              - expired
+              type: string
+            subject:
+              properties:
+                email:
+                  type: string
+                external_id:
+                  type:
+                  - string
+                  - 'null'
+              type: object
+            wording_verdict:
+              type:
+              - string
+              - 'null'
+          required:
+          - id
+          - status
+          - purposes
+          - receipt_id
+          type: object
+      required:
+      - consent_record
+      type: object
+    ConsentRecordImport:
+      additionalProperties: false
+      properties:
+        import:
+          additionalProperties: false
+          properties:
+            accepted_count:
+              type: integer
+            dry_run:
+              type: boolean
+            error:
+              type:
+              - string
+              - 'null'
+            finished_at:
+              format: date-time
+              type:
+              - string
+              - 'null'
+            id:
+              type: string
+            refused_count:
+              type: integer
+            results:
+              description: 'Per-row outcomes: index, outcome (accepted/refused), the
+                record id or the refusal code and purpose, captured_at and recorded_at.'
+              items:
+                additionalProperties: true
+                type: object
+              type: array
+            row_count:
+              type: integer
+            started_at:
+              format: date-time
+              type:
+              - string
+              - 'null'
+            status:
+              enum:
+              - pending
+              - running
+              - completed
+              - failed
+              type: string
+          required:
+          - id
+          - status
+          - dry_run
+          - row_count
+          type: object
+      required:
+      - import
+      type: object
+    ConsentRecordImportRequest:
+      additionalProperties: false
+      properties:
+        dry_run:
+          description: Report what would be recorded and refused; write nothing.
+          type: boolean
+        flow_id:
+          type: string
+        records:
+          description: Rows in the Record API's shape, each with the time you originally
+            captured the decision.
+          items:
+            properties:
+              captured_at:
+                format: date-time
+                type: string
+              decisions:
+                additionalProperties:
+                  properties:
+                    decision:
+                      enum:
+                      - granted
+                      - declined
+                      type: string
+                    default_checked:
+                      type: boolean
+                    mandatory:
+                      type: boolean
+                  required:
+                  - decision
+                  type: object
+                type: object
+              idempotency_key:
+                type: string
+              locale:
+                type: string
+              notice_hash:
+                type: string
+              subject:
+                properties:
+                  email:
+                    format: email
+                    type: string
+                  external_id:
+                    type: string
+                required:
+                - email
+                type: object
+            required:
+            - subject
+            - decisions
+            - captured_at
+            type: object
+          maxItems: 5000
+          type: array
+        send_receipts:
+          description: Send the receipt email for each imported record (off by default).
+          type: boolean
+      required:
+      - flow_id
+      - records
+      type: object
+    ConsentRecordPurposeOutcome:
+      additionalProperties: false
+      properties:
+        basis:
+          type:
+          - string
+          - 'null'
+        key:
+          type: string
+        outcome:
+          enum:
+          - granted
+          - declined
+          - revoked
+          - noticed
+          - objected
+          type: string
+      required:
+      - key
+      - outcome
+      type: object
+    ConsentRecordRequest:
+      additionalProperties: false
+      properties:
+        captured_at:
+          description: When you captured the decision; defaults to now.
+          format: date-time
+          type: string
+        client_facts:
+          additionalProperties: true
+          description: Facts about the capture context (page, form, user agent) —
+            never personal data.
+          type: object
+        decisions:
+          additionalProperties:
+            properties:
+              decision:
+                enum:
+                - granted
+                - declined
+                type: string
+              default_checked:
+                type: boolean
+              mandatory:
+                type: boolean
+            required:
+            - decision
+            type: object
+          description: 'Per purpose key: the decision and the presentation it was
+            made under.'
+          type: object
+        flow_id:
+          description: The flow whose purposes the record answers.
+          type: string
+        idempotency_key:
+          description: Your own key; a repeat returns the same record.
+          type: string
+        locale:
+          type: string
+        notice_hash:
+          description: A digest of the notice text your form displayed (the algorithm
+            is in the forms documentation).
+          type: string
+        subject:
+          properties:
+            email:
+              format: email
+              type: string
+            external_id:
+              description: Your own identifier for the person; stored on the record,
+                never on the person.
+              type: string
+          required:
+          - email
+          type: object
+        suppress_receipt:
+          description: Do not send the receipt email for this record.
+          type: boolean
+      required:
+      - flow_id
+      - subject
+      - decisions
+      type: object
     ConsentSession:
       properties:
         created_at:
@@ -884,6 +1247,68 @@ components:
           type: string
       required:
       - id
+      type: object
+    ConsentStatus:
+      additionalProperties: false
+      properties:
+        application_id:
+          type: string
+        guardian_consent:
+          additionalProperties: true
+          type:
+          - object
+          - 'null'
+        overall_status:
+          enum:
+          - granted
+          - partial
+          - declined
+          - pending
+          type: string
+        purposes:
+          items:
+            additionalProperties: false
+            properties:
+              expires_at:
+                format: date-time
+                type:
+                - string
+                - 'null'
+              granted_at:
+                format: date-time
+                type:
+                - string
+                - 'null'
+              granted_by:
+                type:
+                - string
+                - 'null'
+              purpose:
+                type: string
+              status:
+                description: granted, declined, revoked, expired, objected, noticed
+                  or pending.
+                type: string
+            required:
+            - purpose
+            - status
+            type: object
+          type: array
+        subject_ref:
+          additionalProperties: false
+          properties:
+            email:
+              type: string
+            external_id:
+              type: string
+          type: object
+        user_id:
+          type: string
+      required:
+      - user_id
+      - application_id
+      - overall_status
+      - purposes
       type: object
     ConsentVerification:
       additionalProperties: true
@@ -1639,11 +2064,13 @@ components:
               - approval
               type: string
             mode:
-              description: Delivery mode
+              description: 'Delivery mode (capture: the decision was captured in your
+                own form)'
               enum:
               - embed
               - popup
               - redirect
+              - capture
               type: string
             session_token:
               description: 43-char URL-safe Base64 session token
@@ -1665,6 +2092,55 @@ components:
           - session_token
           - kind
           - mode
+          type: object
+      required:
+      - decision
+      type: object
+    DecisionAuthorizeRequest:
+      additionalProperties: true
+      properties:
+        subject:
+          description: 'The person the organisation knows (a capture commit): the
+            email address and, optionally, its own identifier.'
+          properties:
+            email:
+              format: email
+              type: string
+            external_id:
+              type: string
+          type: object
+        suppress_receipt:
+          description: 'Capture commit only: do not send the receipt email for this
+            record.'
+          type: boolean
+      type: object
+    DecisionAuthorized:
+      additionalProperties: true
+      properties:
+        decision:
+          additionalProperties: true
+          properties:
+            channel:
+              description: Where the committed decision was captured (form_capture,
+                form_capture_browser, form_platform_webhook, controller_attested,
+                imported, embedded_field, embedded_field_browser).
+              type: string
+            consent_token:
+              type: string
+            consent_token_expires_at:
+              format: date-time
+              type: string
+            receipt_id:
+              description: The receipt identifier for that record (the same value).
+              type: string
+            record_id:
+              description: The consent record a capture commit produced (absent for
+                a hosted decision).
+              type: string
+            status:
+              type: string
+          required:
+          - status
           type: object
       required:
       - decision
@@ -9335,9 +9811,12 @@ paths:
       summary: Unsuspend Connections
       tags:
       - Connect
-  "/api/v1/applications/{application_id}/consent_status/{user_id}":
+  "/api/v1/applications/{application_id}/consent_status":
     get:
-      operationId: Applications_ConsentStatuses_show
+      description: Answers the per-purpose consent status for the subject reference
+        your organisation supplied when it recorded a consent — the email address,
+        or your own identifier — so a CRM can act on it without a person id.
+      operationId: Applications_ConsentStatuses_lookup
       parameters:
       - in: path
         name: application_id
@@ -9345,18 +9824,24 @@ paths:
         schema:
           description: Opaque resource identifier (prefix-id format)
           type: string
-      - in: path
-        name: user_id
-        required: true
+      - description: The subject's email address as you supplied it.
+        in: query
+        name: subject[email]
+        required: false
         schema:
-          description: Opaque resource identifier (prefix-id format)
+          type: string
+      - description: Your own identifier for the person.
+        in: query
+        name: subject[external_id]
+        required: false
+        schema:
           type: string
       responses:
         '200':
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/Empty"
+                "$ref": "#/components/schemas/ConsentStatus"
           description: OK
         '400':
           content:
@@ -9396,7 +9881,78 @@ paths:
           description: Internal Server Error
       security:
       - api_token: []
-      summary: Show ConsentStatuses
+      summary: Read consent status by subject reference
+      tags:
+      - Connect
+      x-overturo-sdks:
+      - package: overturo (PyPI)
+        repository: https://github.com/overturo/sdk-python
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
+      - package: "@overturo/sdk (npm)"
+        repository: https://github.com/overturo/sdk
+  "/api/v1/applications/{application_id}/consent_status/{user_id}":
+    get:
+      operationId: Applications_ConsentStatuses_show
+      parameters:
+      - in: path
+        name: application_id
+        required: true
+        schema:
+          description: Opaque resource identifier (prefix-id format)
+          type: string
+      - in: path
+        name: user_id
+        required: true
+        schema:
+          description: Opaque resource identifier (prefix-id format)
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ConsentStatus"
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Bad Request
+        '401':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Not Found
+        '422':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Internal Server Error
+      security:
+      - api_token: []
+      summary: Read a person's consent status
       tags:
       - Connect
   "/api/v1/applications/{application_id}/custom_permissions":
@@ -20745,6 +21301,277 @@ paths:
       summary: Show ConsentReceipts
       tags:
       - Consent
+  "/api/v1/consent_records":
+    post:
+      description: 'Records, in one call, a consent decision your organisation captured
+        in its own form or back office: creates the record, binds the subject by the
+        email you supply, commits it, and freezes the receipt. Repeating a request
+        with the same idempotency key returns the same record. A later request for
+        the same person and flow with changed decisions produces a new record and
+        withdraws the purposes that moved from granted to declined.'
+      operationId: ConsentRecords_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/ConsentRecordRequest"
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ConsentRecord"
+          description: Created
+        '400':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Bad Request
+        '401':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Not Found
+        '422':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Internal Server Error
+      security:
+      - api_token: []
+      summary: Record a consent you captured
+      tags:
+      - Other
+      x-overturo-sdks:
+      - package: overturo (PyPI)
+        repository: https://github.com/overturo/sdk-python
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
+      - package: "@overturo/sdk (npm)"
+        repository: https://github.com/overturo/sdk
+  "/api/v1/consent_records/imports":
+    post:
+      description: Imports historical consents in bulk (at most 5000 rows per batch).
+        Each row is recorded with the imported channel, your original capture time
+        as captured_at and the platform's time as recorded_at; the declared duration
+        counts from captured_at. A dry run reports what would be recorded and refused
+        and writes nothing. Rows that violate the consent rules are refused by name.
+        No receipt email is sent unless you ask. Runs asynchronously; read the import
+        for per-row outcomes.
+      operationId: ConsentRecords_imports
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/ConsentRecordImportRequest"
+        required: true
+      responses:
+        '202':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ConsentRecordImport"
+          description: Accepted
+        '400':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Bad Request
+        '401':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Not Found
+        '422':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Internal Server Error
+      security:
+      - api_token: []
+      summary: Import consents you already hold
+      tags:
+      - Other
+      x-overturo-sdks:
+      - package: overturo (PyPI)
+        repository: https://github.com/overturo/sdk-python
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
+      - package: "@overturo/sdk (npm)"
+        repository: https://github.com/overturo/sdk
+  "/api/v1/consent_records/imports/{import_id}":
+    get:
+      operationId: ConsentRecords_import
+      parameters:
+      - in: path
+        name: import_id
+        required: true
+        schema:
+          description: Opaque resource identifier (prefix-id format)
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ConsentRecordImport"
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Bad Request
+        '401':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Not Found
+        '422':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Internal Server Error
+      security:
+      - api_token: []
+      summary: Read an import's status and per-row outcomes
+      tags:
+      - Other
+      x-overturo-sdks:
+      - package: overturo (PyPI)
+        repository: https://github.com/overturo/sdk-python
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
+      - package: "@overturo/sdk (npm)"
+        repository: https://github.com/overturo/sdk
+  "/api/v1/consent_records/{id}":
+    get:
+      operationId: ConsentRecords_show
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          description: Opaque resource identifier (prefix-id format)
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ConsentRecord"
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Bad Request
+        '401':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Not Found
+        '422':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Internal Server Error
+      security:
+      - api_token: []
+      summary: Read a consent record
+      tags:
+      - Other
+      x-overturo-sdks:
+      - package: overturo (PyPI)
+        repository: https://github.com/overturo/sdk-python
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
+      - package: "@overturo/sdk (npm)"
+        repository: https://github.com/overturo/sdk
   "/api/v1/consent_sessions":
     post:
       operationId: ConsentSessions_create
@@ -20938,6 +21765,12 @@ paths:
         required: true
         schema:
           type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/DecisionAuthorizeRequest"
+        required: true
       responses:
         '200':
           content:
@@ -22831,6 +23664,73 @@ paths:
       x-overturo-sdks:
       - package: overturo (PyPI)
         repository: https://github.com/overturo/sdk-python
+  "/api/v1/decisions/capture":
+    post:
+      description: Creates a pending capture for a decision a person made inside your
+        own form and returns the capture token. The capture is pending until your
+        server commits it with the application key (POST /decisions/{session_token}/authorize);
+        an uncommitted capture expires after 24 hours and leaves no record. Only a
+        flow whose consent needs nothing but a decision can be captured, and a consent
+        purpose attested as pre-ticked or mandatory is refused.
+      operationId: Decisions_Captures_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/ConsentCaptureRequest"
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ConsentCapture"
+          description: Created
+        '400':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Bad Request
+        '401':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Not Found
+        '422':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Internal Server Error
+      security:
+      - publishable_key: []
+      - api_token: []
+      summary: Capture a decision from your own form
+      tags:
+      - Agree
+      x-overturo-sdks:
+      - package: "@overturo/js (npm)"
+        repository: https://github.com/overturo/js
   "/api/v1/decisions/flows/{flow_id}/disclosures":
     get:
       description: Returns what the decision screen will present for this flow — purposes
@@ -23035,12 +23935,18 @@ paths:
         required: true
         schema:
           type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/DecisionAuthorizeRequest"
+        required: true
       responses:
         '200':
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/Empty"
+                "$ref": "#/components/schemas/DecisionAuthorized"
           description: OK
         '400':
           content:
@@ -23084,6 +23990,13 @@ paths:
       summary: Authorize Decisions
       tags:
       - Agree
+      x-overturo-sdks:
+      - package: overturo (PyPI)
+        repository: https://github.com/overturo/sdk-python
+      - package: overturo (RubyGems)
+        repository: https://github.com/overturo/sdk-ruby
+      - package: "@overturo/sdk (npm)"
+        repository: https://github.com/overturo/sdk
   "/api/v1/decisions/{session_token}/cancel":
     post:
       operationId: Decisions_cancel
