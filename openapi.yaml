@@ -1031,6 +1031,24 @@ components:
           properties:
             accepted_count:
               type: integer
+            allowance:
+              additionalProperties: false
+              description: 'The allowance this import is checked against before it
+                runs: the meter, what is left this month (null when unlimited) and
+                its state.'
+              properties:
+                meter:
+                  type: string
+                remaining:
+                  type:
+                  - integer
+                  - 'null'
+                state:
+                  type: string
+              required:
+              - meter
+              - state
+              type: object
             dry_run:
               type: boolean
             error:
@@ -3143,6 +3161,170 @@ components:
           type: string
       required:
       - message
+      type: object
+    OapAuthorizeAllow:
+      additionalProperties: true
+      properties:
+        decision:
+          enum:
+          - allow
+          type: string
+        exp:
+          type: integer
+        iat:
+          type: integer
+        iss:
+          type: string
+        oap_ver:
+          type: string
+        receipt:
+          description: Compact signed receipt (oap+jwt); valid for sixty seconds.
+          type: string
+        receipt_jti:
+          type: string
+        record_id:
+          description: The audit-trail record of this authorization.
+          type: string
+      required:
+      - decision
+      - receipt
+      - receipt_jti
+      - iat
+      - exp
+      - record_id
+      - iss
+      - oap_ver
+      type: object
+    OapAuthorizeEscalate:
+      additionalProperties: true
+      properties:
+        approval_ttl_at:
+          format: date-time
+          type: string
+        decision:
+          enum:
+          - escalate
+          type: string
+        decision_url:
+          description: The decision page a signer opens to approve, decline or counter.
+          format: uri
+          type: string
+        escalation_id:
+          type: string
+        iss:
+          type: string
+        oap_ver:
+          type: string
+        record_id:
+          type: string
+        required_signers:
+          items:
+            type: string
+          type: array
+        threshold:
+          additionalProperties: true
+          type: object
+        wait_url:
+          description: Settlement wait for this agent's credential; answers when the
+            decision settles.
+          format: uri
+          type: string
+      required:
+      - decision
+      - escalation_id
+      - required_signers
+      - approval_ttl_at
+      - decision_url
+      - wait_url
+      - record_id
+      - iss
+      - oap_ver
+      type: object
+    OapAuthorizeRequest:
+      additionalProperties: true
+      properties:
+        action:
+          type: string
+        context:
+          additionalProperties: true
+          description: Never persisted; hashed into context_hash.
+          type: object
+        counterparty:
+          description: The counterparty identifier the receipt is bound to (its aud).
+          type: string
+        currency:
+          type: string
+        mode_hint:
+          enum:
+          - conductor
+          - oversight
+          type: string
+        nonce:
+          description: Unique per attempt; becomes the receipt's jti.
+          type: string
+        scope:
+          type: string
+        value:
+          description: Decimal string; required with currency when the action is monetary.
+          type: string
+      required:
+      - nonce
+      - action
+      - scope
+      type: object
+    OapEscalationSettlement:
+      additionalProperties: true
+      properties:
+        decided_by:
+          type:
+          - string
+          - 'null'
+        decision:
+          enum:
+          - allow
+          type: string
+        decision_record_id:
+          type:
+          - string
+          - 'null'
+        escalation_id:
+          type: string
+        exp:
+          type: integer
+        iat:
+          type: integer
+        iss:
+          type: string
+        negotiation_id:
+          type: string
+        oap_ver:
+          type: string
+        reason_code:
+          type: string
+        receipt:
+          type: string
+        receipt_jti:
+          type: string
+        record_id:
+          type: string
+        retry_after:
+          type: integer
+        status:
+          enum:
+          - pending
+          - approved
+          - denied
+          - expired
+          - cancelled
+          - countered
+          type: string
+        wait_again:
+          type: boolean
+      required:
+      - status
+      - wait_again
+      - escalation_id
+      - oap_ver
       type: object
     OpenapiDocument:
       additionalProperties: true
@@ -21363,7 +21545,7 @@ paths:
       - api_token: []
       summary: Record a consent you captured
       tags:
-      - Other
+      - Consent
       x-overturo-sdks:
       - package: overturo (PyPI)
         repository: https://github.com/overturo/sdk-python
@@ -21434,7 +21616,7 @@ paths:
       - api_token: []
       summary: Import consents you already hold
       tags:
-      - Other
+      - Consent
       x-overturo-sdks:
       - package: overturo (PyPI)
         repository: https://github.com/overturo/sdk-python
@@ -21499,7 +21681,7 @@ paths:
       - api_token: []
       summary: Read an import's status and per-row outcomes
       tags:
-      - Other
+      - Consent
       x-overturo-sdks:
       - package: overturo (PyPI)
         repository: https://github.com/overturo/sdk-python
@@ -21564,7 +21746,7 @@ paths:
       - api_token: []
       summary: Read a consent record
       tags:
-      - Other
+      - Consent
       x-overturo-sdks:
       - package: overturo (PyPI)
         repository: https://github.com/overturo/sdk-python
@@ -23727,7 +23909,7 @@ paths:
       - api_token: []
       summary: Capture a decision from your own form
       tags:
-      - Agree
+      - Consent
       x-overturo-sdks:
       - package: "@overturo/js (npm)"
         repository: https://github.com/overturo/js
@@ -26857,13 +27039,25 @@ paths:
         schema:
           description: Opaque resource identifier (prefix-id format)
           type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/OapAuthorizeRequest"
+        required: true
       responses:
-        '200':
+        '201':
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/Empty"
-          description: OK
+                "$ref": "#/components/schemas/OapAuthorizeAllow"
+          description: Created
+        '202':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/OapAuthorizeEscalate"
+          description: Accepted
         '400':
           content:
             application/json:
@@ -26968,6 +27162,82 @@ paths:
       summary: Principal index Denials
       tags:
       - Other
+  "/api/v1/grants/{id}/escalations/{escalation_id}/wait":
+    get:
+      operationId: Oap_EscalationSettlements_show
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          description: Opaque resource identifier (prefix-id format)
+          type: string
+      - in: path
+        name: escalation_id
+        required: true
+        schema:
+          description: Opaque resource identifier (prefix-id format)
+          type: string
+      - description: Seconds to hold before answering pending (default and ceiling
+          20).
+        in: query
+        name: hold
+        required: false
+        schema:
+          maximum: 20
+          minimum: 1
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/OapEscalationSettlement"
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Bad Request
+        '401':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Not Found
+        '422':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+          description: Internal Server Error
+      security:
+      - api_token: []
+      summary: Show EscalationSettlements
+      tags:
+      - Other
+      x-overturo-sdks:
+      - package: "@overturo/sdk (npm)"
+        repository: https://github.com/overturo/sdk
   "/api/v1/grants/{id}/pause":
     post:
       operationId: Oap_Grants_pause
